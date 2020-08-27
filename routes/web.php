@@ -24,6 +24,7 @@ Route::group([
     'namespace' => 'Admin'
 ], function () {
     Route::get('/', 'AdminController@index');
+    Route::resource('category', 'CategoryController');
 });
 
 Auth::routes();
