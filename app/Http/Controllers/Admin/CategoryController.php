@@ -29,7 +29,7 @@ class CategoryController extends Controller
         $category = [];
         $categories = Category::with('children')->where('parent_id', 0)->get();
         $delimetr = '';
-        return view('category.create', compact('category', 'categories', 'delimetr'));
+        return view('admin.category.create', compact('category', 'categories', 'delimetr'));
     }
 
     /**
@@ -40,7 +40,8 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $category = Category::create($request->all());
+//        dd($request);
+        Category::create($request->all());
         return redirect()->route('category.index');
     }
 

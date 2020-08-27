@@ -8,7 +8,7 @@
         @include('admin.category._categories')
     </select>
 </div>
-
+<input type="hidden" name="slug">
 <hr>
 
 <button type="submit" class="btn btn-primary">Сохранить</button>

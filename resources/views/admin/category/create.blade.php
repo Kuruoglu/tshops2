@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <form action="{{route('category.store')}}" methos="post">
+        <form action="{{ route('category.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             @include('admin.category._form')
         </form>

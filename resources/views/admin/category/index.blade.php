@@ -23,8 +23,8 @@
                   <td>{{$category->slug}}</td>
                   <td>{{$category->qty}}</td>
                   <td class="d-flex justify-content-lg-end">
-                      <a href="{{route('category.edit', ['category' => $item->id])}}" class="btn btn-success"> <i class="fa fa-edit"></i></a>
-                      <form action="/admin/category/{{$item->id}}" method="post">
+                      <a href="{{route('category.edit', ['category' => $category->id])}}" class="btn btn-success"> <i class="fa fa-edit"></i></a>
+                      <form action="/admin/category/{{$category->id}}" method="post">
                           @csrf
                           @method('DELETE')
                           <button class="btn btn-danger"> <i class="fa fa-trash"></i></button>

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Category;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Events\Dispatcher;
 use JeroenNoten\LaravelAdminLte\Events\BuildingMenu;
@@ -31,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
             $event->menu->add([
                 'key'   => 'categories',
                 'text'  => 'Categories',
-                'label' => 1,
+                'label' => Category::all()->count(),
                 'icon'  => 'far fa-fw fa-file',
                 'url'   => 'admin/category',
             ]);

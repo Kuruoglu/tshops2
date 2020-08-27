@@ -12,12 +12,12 @@
 
         @endisset
     >
-        {{$delimetr ?? ''}}{{$category->name ?? ''}}
+        {{$delimetr ?? ''}}{{$categoryItem->name ?? ''}}
     </option>
     @isset($categoryItem->children)
         @include('admin.category._categories', [
             'categories' => $categoryItem->children,
-            'delimetr' => ' - ' . $delimetr
+            'delimetr' => '-' . $delimetr,
         ])
     @endisset
 @endforeach
