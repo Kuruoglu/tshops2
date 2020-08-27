@@ -1,5 +1,8 @@
 <div class="form-group">
-    <input type="text" name="name" value="{{ $category->name ?? '' }}" class="form-control" placeholder="Наименование категории">
+    <input type="text" name="name" value="{{ old('name', $category->name ?? '')  }}" class="form-control" placeholder="Наименование категории">
+</div>
+<div class="form-group">
+    <input type="text" name="slug" value="{{ old('name', $category->slug ?? '')  }}" class="form-control" placeholder="Как будет выглядеть в ссылке">
 </div>
 
 <div class="form-group">
@@ -8,7 +11,7 @@
         @include('admin.category._categories')
     </select>
 </div>
-<input type="hidden" name="slug">
+
 <hr>
 
 <button type="submit" class="btn btn-primary">Сохранить</button>

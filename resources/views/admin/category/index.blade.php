@@ -24,7 +24,7 @@
                   <td>{{$category->qty}}</td>
                   <td class="d-flex justify-content-lg-end">
                       <a href="{{route('category.edit', ['category' => $category->id])}}" class="btn btn-success"> <i class="fa fa-edit"></i></a>
-                      <form action="/admin/category/{{$category->id}}" method="post">
+                      <form action="{{ route('category.destroy', ['category' => $category->id]) }}" method="post">
                           @csrf
                           @method('DELETE')
                           <button class="btn btn-danger"> <i class="fa fa-trash"></i></button>

@@ -53,7 +53,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('admin.category.show');
     }
 
     /**
@@ -64,7 +64,11 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $categories = Category::with('children')->where('parent_id', 0)->get();
+        $delimetr = '';
+        $category = Category::findOrFail($id);
+//        dd($category);
+            return view('admin.category.edit', compact('category', 'categories', 'delimetr'));
     }
 
     /**
@@ -76,7 +80,9 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->update($request->all());
+        return redirect()->route('category.edit', ['category' => $id]);
     }
 
     /**
@@ -87,6 +93,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::findOrFail($id)->delete();
+        return redirect()->route('category.index');
     }
 }

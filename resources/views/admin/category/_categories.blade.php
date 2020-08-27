@@ -17,7 +17,7 @@
     @isset($categoryItem->children)
         @include('admin.category._categories', [
             'categories' => $categoryItem->children,
-            'delimetr' => '-' . $delimetr,
+            'delimetr' => ' - ' . $delimetr,
         ])
     @endisset
 @endforeach
