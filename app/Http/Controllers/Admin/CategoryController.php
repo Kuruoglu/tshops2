@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.category.index');
+        $categories = Category::all();
+        return view('admin.category.index', compact('categories'));
     }
 
     /**
@@ -24,7 +26,10 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $category = [];
+        $categories = Category::with('children')->where('parent_id', 0)->get();
+        $delimetr = '';
+        return view('category.create', compact('category', 'categories', 'delimetr'));
     }
 
     /**
@@ -35,7 +40,8 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = Category::create($request->all());
+        return redirect()->route('category.index');
     }
 
     /**
