@@ -25,6 +25,7 @@ Route::group([
 ], function () {
     Route::get('/', 'AdminController@index');
     Route::resource('category', 'CategoryController');
+    Route::resource('user', 'UserController');
 });
 
 Auth::routes();

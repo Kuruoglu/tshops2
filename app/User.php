@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'company', 'img', 'phone', 'role'
     ];
 
     /**
@@ -40,5 +40,10 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return $this->role == 'admin';
+    }
+
+    public function setPasswordAttribute($value)
+    {
+        return $this->attributes['password'] = \Hash::make($value);
     }
 }

@@ -39,7 +39,7 @@ class AppServiceProvider extends ServiceProvider
             $event->menu->add([
                 'key'   => 'users',
                 'text'  => 'Users',
-                'label' => 1,
+                'label' => User::all()->count(),
                 'icon'  => 'far fa-fw fa-user',
                 'url'   => 'admin/user',
             ]);
