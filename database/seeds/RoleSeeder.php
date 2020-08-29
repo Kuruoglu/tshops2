@@ -20,7 +20,7 @@ class RoleSeeder extends Seeder
         $admin->name = 'admin';
         $admin->slug = \Str::slug($admin->name, '-');
         $admin->save();
-        $admin->permissions()->attach( $create_post);
+        $admin->permissions()->sync( [$create_post->id, $manage_user->id, $add_category->id]);
 
 
 
@@ -29,13 +29,13 @@ class RoleSeeder extends Seeder
         $organizer->slug = \Str::slug($organizer->name. '-');
         $organizer->save();
 
-        $organizer->permissions()->attach( $add_category);
-//
-//
-//        $user = new Role();
-//        $user->name = 'user';
-//        $user->slug = \Str::slug($user->name, '-');
-//        $user->save();
+        $organizer->permissions()->sync( [$add_category->id, $create_post->id]);
+
+
+        $user = new Role();
+        $user->name = 'user';
+        $user->slug = \Str::slug($user->name, '-');
+        $user->save();
 //        $user->permissions()->attach('create-post');
 
 

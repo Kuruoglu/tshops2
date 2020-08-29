@@ -29,10 +29,12 @@ Route::group([
 });
 Route::group([
     'prefix' => 'organizer',
-    'middleware' => ['auth', 'role:admin', 'role:organizer'],
-    'namespace' => 'Organizer'
+    'middleware' => ['role:admin', 'role:organizer', 'auth'],
+//    'middleware' => ['auth'],
+//    'middleware' => [],
+    'namespace' => 'Org'
 ], function () {
-//    Route::get('/', 'AdminController@index');
+    Route::get('/', 'OrganizerController@index');
 //    Route::resource('category', 'CategoryController');
 //    Route::resource('user', 'UserController');
 });

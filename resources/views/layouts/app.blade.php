@@ -26,11 +26,30 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-                @role('admin')
+
+                @if(auth()->check() && auth()->user()->hasRole('admin'))
                 <a class="navbar-brand" href="{{ url('/admin') }}">
                     {{ 'Кабинет' }}
                 </a>
-                @endrole
+                @elseif (auth()->check() && auth()->user()->hasRole('organizer'))
+
+                    <a class="navbar-brand" href="{{ url('/organizer') }}">
+                        {{ 'Кабинет' }}
+                    </a>
+
+                @elseif (auth()->check() && auth()->user()->hasRole('user'))
+
+                    <a class="navbar-brand" href="{{ url('/user') }}">
+                        {{ 'Кабинет' }}
+                    </a>
+                @else
+                    <a class="navbar-brand" href="{{'/login'}}">
+                        {{ 'Кабинет' }}
+                    </a>
+                @endif
+{{--                @if(auth()->check() && auth()->user()->hasRole('organizer'))--}}
+{{--                   --}}
+{{--                @endif--}}
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
