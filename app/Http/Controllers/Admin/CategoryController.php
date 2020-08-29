@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
@@ -26,11 +27,19 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $category = [];
-        $categories = Category::with('children')->where('parent_id', 0)->get();
-        $delimetr = '';
-        return view('admin.category.create', compact('category', 'categories', 'delimetr'));
+        if (Auth::user()->can('add-category')) {
+            $category = [];
+            $categories = Category::with('children')->where('parent_id', 0)->get();
+            $delimetr = '';
+            return view('admin.category.create', compact('category', 'categories', 'delimetr'));
+        }else {
+            $categories = Category::all();
+            return view('admin.category.index', compact('categories'));
+        }
     }
+
+
+
 
     /**
      * Store a newly created resource in storage.

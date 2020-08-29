@@ -19,29 +19,29 @@ class UserSeeder extends Seeder
         $manageUsers = Permission::where('slug','manage-users')->first();
         $addCategory = Permission::where('slug','add-category')->first();
 
-//        $user = new User();
-//        $user->name = 'Kuruohlu Andrey';
-//        $user->email = '7395836@gmail.com';
-//        $user->password = bcrypt('12345678');
-//        $user->save();
-//        $user->roles()->attach($admin);
-//        $user->permissions()->attach([$manageUsers->id, $createPost->id]);
+        $user = new User();
+        $user->name = 'Kuruohlu Andrey';
+        $user->email = '7395836@gmail.com';
+        $user->password = '12345678';
+        $user->save();
+        $user->roles()->sync($admin);
+        $user->permissions()->sync([$manageUsers->id, $createPost->id, $addCategory->id]);
 
         $user1 = new User();
         $user1->name = 'Jhon Deo';
         $user1->email = 'jhon@deo.com';
-        $user1->password = bcrypt('secret');
+        $user1->password = '12345678';
         $user1->save();
-        $user1->roles()->attach($admin);
-        $user1->permissions()->attach($manageUsers);
+        $user1->roles()->sync($admin);
+        $user1->permissions()->sync($manageUsers);
 
 
         $user2 = new User();
         $user2->name = 'Mike Thomas';
         $user2->email = 'mike@thomas.com';
-        $user2->password = bcrypt('secret');
+        $user2->password = '12345678';
         $user2->save();
-        $user2->roles()->attach($organizer);
-        $user2->permissions()->attach($createPost);
+        $user2->roles()->sync($organizer);
+        $user2->permissions()->sync($createPost);
     }
 }

@@ -27,7 +27,15 @@ Route::group([
     Route::resource('category', 'CategoryController');
     Route::resource('user', 'UserController');
 });
-
+Route::group([
+    'prefix' => 'organizer',
+    'middleware' => ['auth', 'role:admin', 'role:organizer'],
+    'namespace' => 'Organizer'
+], function () {
+//    Route::get('/', 'AdminController@index');
+//    Route::resource('category', 'CategoryController');
+//    Route::resource('user', 'UserController');
+});
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index');

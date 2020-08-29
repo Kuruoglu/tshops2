@@ -35,12 +35,11 @@ trait HasPermissionsTrait {
         return $this->hasPermissionThroughRole($permission) || $this->hasPermission($permission);
     }
 
-    public function hasPermissionThroughRole($p) {
+    public function hasPermissionThroughRole($permission) {
 
 //        return $this->hasRole($permission->roles);
-        $permission = Permission::where('slug',$p)->first();
-        //dd($create_post->roles);
-        foreach ($permission->roles as $role){
+//        $permission = Permission::where('slug',$p)->first();
+        foreach ($permission->roles() as $role){
             if($this->roles->contains($role)) {
                 return true;
             }

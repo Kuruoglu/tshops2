@@ -7,6 +7,7 @@ use App\Permission;
 use Illuminate\Http\Request;
 use App\User;
 use App\Role;
+use Illuminate\Auth;
 
 class AdminController extends Controller
 {
@@ -17,7 +18,21 @@ class AdminController extends Controller
      */
     public function index()
     {
-
+//        $create_post = Permission::where('slug', 'create_post')->first();
+////        $admin = Role::where('slug', 'admin')->first();
+//        $user = User::find(3);
+//        Auth::user() = User::find(3);
+//        $user->roles()->sync($admin);
+//        dd($user->permissions);
+//        dd( $user->can($create_post));
+//        dd($user->hasRole('admin'));
+//        dd($user->hasRole('organizer'));
+//        dd($user->giveRolesTo($admin));
+//        dd($user->hasRole('organizer'));// вернёт false
+//        dd($user->hasPermissionTo('create-post'));// вернёт true
+//        dd($user->givePermissionsTo('create-post'));
+//        dd($user->deletePermissions('create-post'));
+//        dd($user->hasPermissionThroughRole('create-post'));
         return view('admin.layouts.index');
 
     }
