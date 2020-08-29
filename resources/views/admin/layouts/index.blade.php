@@ -7,7 +7,13 @@
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
+{{--    @role('project-manager')--}}
+{{--    Project Manager Panel--}}
+{{--    @endrole--}}
+{{--    @role(‘web-developer’)--}}
+{{--    Web Developer Panel--}}
+{{--    @endrole--}}
+{{--    <p>Welcome to this beautiful admin panel.</p>--}}
 @stop
 
 {{--@section('css')--}}

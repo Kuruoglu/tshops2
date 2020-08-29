@@ -4,7 +4,7 @@
 
         <input type="text" class="form-control mb-2 " name="email" placeholder="Email пользователя" value="{{old('email', $user->email ?? '')}}">
         <input type="text" class="form-control mb-2" name="name" placeholder="Имя пользователя" value="{{old('name', $user->name ?? '')}}">
-        <input type="{{$user ? 'hidden' : 'text'}}" class="form-control mb-2" name="password" placeholder="Пароль пользователя" value="{{old('password', $user->password ?? '')}}">
+        <input type="{{isset($user) ? 'hidden' : 'text'}}" class="form-control mb-2" name="password" placeholder="Пароль пользователя" value="{{old('password', $user->password ?? '')}}">
         <select name="role" class="form-control mb-2">
             <option value="null"checked>Выберите роль для пользователя</option>
             <option value="user" >Пользователь</option>

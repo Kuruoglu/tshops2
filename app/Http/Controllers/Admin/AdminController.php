@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Permission;
 use Illuminate\Http\Request;
+use App\User;
+use App\Role;
 
 class AdminController extends Controller
 {
@@ -14,7 +17,9 @@ class AdminController extends Controller
      */
     public function index()
     {
+
         return view('admin.layouts.index');
+
     }
 
     /**

@@ -20,7 +20,7 @@ Route::group([
 });
 Route::group([
     'prefix' => 'admin',
-    'middleware' => ['auth'],
+    'middleware' => ['auth', 'role:admin'],
     'namespace' => 'Admin'
 ], function () {
     Route::get('/', 'AdminController@index');
