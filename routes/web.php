@@ -12,12 +12,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::group([
 
     'namespace' => 'Home'
 ], function () {
     Route::get('/', 'MainController@index')->name('home');
 });
+
 Route::group([
     'prefix' => 'admin',
     'middleware' => ['auth', 'role:admin'],
@@ -27,17 +29,17 @@ Route::group([
     Route::resource('category', 'CategoryController');
     Route::resource('user', 'UserController');
 });
+
 Route::group([
     'prefix' => 'organizer',
     'middleware' => ['role:admin', 'role:organizer', 'auth'],
-//    'middleware' => ['auth'],
-//    'middleware' => [],
     'namespace' => 'Org'
 ], function () {
     Route::get('/', 'OrganizerController@index');
 //    Route::resource('category', 'CategoryController');
 //    Route::resource('user', 'UserController');
 });
+
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index');
