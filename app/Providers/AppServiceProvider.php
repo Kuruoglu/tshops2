@@ -27,8 +27,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(Dispatcher $events)
     {
-        if (auth()->check() && auth()->user()->hasRole('admin')) {
             $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
+
+        if (auth()->check() && auth()->user()->hasRole('admin')) {
 
                 $event->menu->add([
                     'key'   => 'categories',
@@ -105,10 +106,10 @@ class AppServiceProvider extends ServiceProvider
                     ]
 
                 ]);
-            });
+
 
         }else {
-            $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
+
 
 //                $event->menu->add([
 //                    'key'   => 'categories',
@@ -142,42 +143,42 @@ class AppServiceProvider extends ServiceProvider
                             'text' => 'Все заказы',
                             'label' => 1,
                             'label_color' => 'light',
-                            'url'   => 'organizer/order/{status}',
+                            'url'   => 'organizer/order/all',
                         ],
                         [
                             'key' => 'newOrder',
                             'text' => 'Новые',
                             'label' => 1,
                             'label_color' => 'light',
-                            'url'   => 'organizer/order/{status}',
+                            'url'   => 'organizer/order/1',
                         ],
                         [
                             'key' => 'processOrder',
                             'text' => 'В процессе',
                             'label' => 1,
                             'label_color' => 'light',
-                            'url'   => 'organizer/order/{status}',
+                            'url'   => 'organizer/order/2',
                         ],
                         [
                             'key' => 'toSendOrder',
                             'text' => 'На отправку',
                             'label' => 1,
                             'label_color' => 'light',
-                            'url'   => 'organizer/order/{status}',
+                            'url'   => 'organizer/order/4',
                         ],
                         [
                             'key' => 'completeOrder',
                             'text' => 'Завершенные',
                             'label' => 1,
                             'label_color' => 'light',
-                            'url'   => 'organizer/order/{status}',
+                            'url'   => 'organizer/order/3',
                         ],
                         [
                             'key' => 'canceledOrder',
                             'text' => 'Отмененные',
                             'label' => 1,
                             'label_color' => 'light',
-                            'url'   => 'organizer/order/{status}',
+                            'url'   => 'organizer/order/5',
                         ],
 
 
@@ -185,7 +186,8 @@ class AppServiceProvider extends ServiceProvider
                     ]
 
                 ]);
-            });
+
         }
+            });
     }
 }

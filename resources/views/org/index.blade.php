@@ -7,5 +7,5 @@
 @stop
 
 @section('content')
-<h1>sllllllllll</h1>
+
 @stop

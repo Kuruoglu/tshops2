@@ -21,7 +21,7 @@ class CreateOrdersTable extends Migration
             $table->string('color');
             $table->string('price');
             $table->string('size');
-            $table->string('comment');
+            $table->string('comment')->nullable();
             $table->string('currency');
             $table->string('post_office')->nullable();
             $table->string('post_office_number')->nullable();
