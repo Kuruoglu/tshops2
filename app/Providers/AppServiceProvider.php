@@ -3,10 +3,12 @@
 namespace App\Providers;
 
 use App\Category;
+use App\Order;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Events\Dispatcher;
 use JeroenNoten\LaravelAdminLte\Events\BuildingMenu;
 use App\User;
+use function Composer\Autoload\includeFile;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -132,51 +134,51 @@ class AppServiceProvider extends ServiceProvider
                 $event->menu->add([
                     'key'   => 'orders',
                     'text'  => 'Заказы',
-                    'label' => 1,
-                    'label_color' => 'light',
+
+
                     'icon'  => 'far fa-fw fa-user',
 
-                    'url'   => '#',
+                    'url'   => 'organizer/order/all',
                     'submenu' => [
                         [
                             'key' => 'allOrder',
                             'text' => 'Все заказы',
-                            'label' => 1,
+                            'label' => Order::all()->count(),
                             'label_color' => 'light',
                             'url'   => 'organizer/order/all',
                         ],
                         [
                             'key' => 'newOrder',
                             'text' => 'Новые',
-                            'label' => 1,
+                            'label' => Order::where('status_id', 1)->count(),
                             'label_color' => 'light',
                             'url'   => 'organizer/order/1',
                         ],
                         [
                             'key' => 'processOrder',
                             'text' => 'В процессе',
-                            'label' => 1,
+                            'label' => Order::where('status_id', 2)->count(),
                             'label_color' => 'light',
                             'url'   => 'organizer/order/2',
                         ],
                         [
                             'key' => 'toSendOrder',
                             'text' => 'На отправку',
-                            'label' => 1,
+                            'label' => Order::where('status_id', 4)->count(),
                             'label_color' => 'light',
                             'url'   => 'organizer/order/4',
                         ],
                         [
                             'key' => 'completeOrder',
                             'text' => 'Завершенные',
-                            'label' => 1,
+                            'label' => Order::where('status_id', 3)->count(),
                             'label_color' => 'light',
                             'url'   => 'organizer/order/3',
                         ],
                         [
                             'key' => 'canceledOrder',
                             'text' => 'Отмененные',
-                            'label' => 1,
+                            'label' => Order::where('status_id', 5)->count(),
                             'label_color' => 'light',
                             'url'   => 'organizer/order/5',
                         ],
@@ -186,8 +188,13 @@ class AppServiceProvider extends ServiceProvider
                     ]
 
                 ]);
-
-        }
-            });
+                $event->menu->add([
+                    'key'   => 'anons',
+                    'text'  => 'Анонсы',
+                    'icon'  => 'far fa-fw fa-user',
+                    'url'   => '/organizer/anons/',
+                ]);
+            }
+        });
     }
 }

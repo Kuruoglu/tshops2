@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Anons;
 
 class Category extends Model
 {
@@ -16,6 +17,11 @@ class Category extends Model
     public function children()
     {
         return $this->hasMany(self::class, 'parent_id');
+    }
+
+    public function anonses()
+    {
+        return $this->belongsToMany(Anons::class);
     }
 
     public function setSlugAttribute($value)

@@ -1,8 +1,10 @@
 <?php
 namespace App\Traits;
 
+
 use App\Permission;
 use App\Role;
+use App\User;
 
 trait HasPermissionsTrait {
 
@@ -17,6 +19,8 @@ trait HasPermissionsTrait {
         return $this->belongsToMany(Permission::class,'users_permissions');
 
     }
+
+
 
     public function hasRole( ... $roles ) {
 

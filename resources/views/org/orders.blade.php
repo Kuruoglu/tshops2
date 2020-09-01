@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="container">
-        <a href="{{route('category.create')}}" class="btn btn-dark">Создать заказ</a>
+        <a href="{{route('order.create')}}" class="btn btn-dark">Создать заказ</a>
         <table class="table">
             <caption>Категории</caption>
             <thead>
@@ -12,6 +12,7 @@
                 <th>Ссылка</th>
                 <th>Количество</th>
                 <th>Цвет</th>
+                <th>Размер</th>
                 <th>Цена</th>
                 <th>Почтовая служба</th>
                 <th>Почтовое отделение</th>
@@ -27,7 +28,8 @@
                     <td>
                         <div style = "width: 25px; height: 25px; background-color: {{$order->color}}" ></div>
                     </td>
-                    <td>{{$order->price}}{{$order->currency}}</td>
+                    <td>{{$order->size}}</td>
+                    <td>{{$order->price}} {{$order->currency}}</td>
                     <td>{{$order->post_office}}</td>
                     <td>{{$order->post_office_number}}</td>
                     <td class="d-flex justify-content-lg-end">

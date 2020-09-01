@@ -17,13 +17,18 @@ class RoleMiddleware
      */
     public function handle($request, Closure $next, $role, $permission = null)
     {
-        if(!$request->user()->hasRole($role)) {
-            return redirect()->route('home')->with('success', 'У вас нет доступа');
-        }
-        if($permission !== null && !$request->user()->can($permission)) {
+        if($request->user()) {
+            if(!$request->user()->hasRole($role)) {
+                return redirect()->route('home')->with('success', 'У вас нет доступа');
+            }
+            if($permission !== null && !$request->user()->can($permission)) {
 
-            abort(404);
+                abort(404);
+            }
+        }else {
+           return  redirect()->route('login');
         }
+
         return $next($request);
     }
 }

@@ -32,14 +32,18 @@ Route::group([
 
 Route::group([
     'prefix' => 'organizer',
-    'middleware' => ['role:admin',  'auth'],
+//    'middleware' => ['role:admin',  'auth'],
 //    'middleware' => ['auth'],
     'middleware' => ['role:organizer'],
     'namespace' => 'Org'
 ], function () {
     Route::get('/', 'OrganizerController@index');
     Route::get('/order/all', 'OrderStatusController@all');
-    Route::get('/order/{id}', 'OrderStatusController@new');
+    Route::get('/order/{id}', 'OrderStatusController@status');
+//    Route::get('/anons/all', 'AnonsController@index');
+    Route::resource('/anons', 'AnonsController');
+    Route::resource('/order', 'OrderController');
+
 
 });
 
