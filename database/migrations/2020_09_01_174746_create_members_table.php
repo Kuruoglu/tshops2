@@ -15,6 +15,15 @@ class CreateMembersTable extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('anons_id')->constrained();
+            $table->foreignId('user_id')->constrained();
+            $table->string('url');
+            $table->string('qty');
+            $table->string('color');
+            $table->string('price');
+            $table->string('size');
+            $table->string('comment')->nullable();
+            $table->string('currency');
             $table->timestamps();
         });
     }
