@@ -6,11 +6,13 @@ use App\Brand;
 use App\Category;
 use App\User;
 use App\Member;
+use App\Order;
 use Illuminate\Database\Eloquent\Model;
 
 class Anons extends Model
 {
     protected $guarded = [];
+
     public function categories()
     {
         return $this->belongsTo(Category::class);
@@ -21,13 +23,13 @@ class Anons extends Model
         return $this->belongsTo(Brand::class);
     }
 
-    public function user()
+    public function users()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(User::class);
     }
 
-    public function members()
+    public function orders()
     {
-        return $this->hasMany(Member::class);
+        return $this->hasMany(Order::class);
     }
 }

@@ -2,6 +2,7 @@
 use App\Role;
 use App\User;
 use App\Permission;
+use App\Anons;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
@@ -19,6 +20,7 @@ class UserSeeder extends Seeder
         $createPost = Permission::where('slug','create-post')->first();
         $manageUsers = Permission::where('slug','manage-users')->first();
         $addCategory = Permission::where('slug','add-category')->first();
+
 
         $user = new User();
         $user->name = 'Kuruohlu Andrey';
@@ -45,12 +47,19 @@ class UserSeeder extends Seeder
         $user2->roles()->sync($organizer);
         $user2->permissions()->sync($createPost);
 
-        $user3 = new User();
-        $user3->name = 'User';
-        $user3->email = 'user@thomas.com';
-        $user3->password = '12345678';
-        $user3->save();
-        $user3->roles()->sync($user);
-        $user3->permissions()->sync($createPost);
+        $user4 = new User();
+        $user4->name = 'User3';
+        $user4->email = 'user3@thomas.com';
+        $user4->password = '12345678';
+        $user4->save();
+        $user4->roles()->sync($organizer);
+
+        $user5 = new User();
+        $user5->name = 'User4';
+        $user5->email = 'user4@thomas.com';
+        $user5->password = '12345678';
+        $user5->save();
+        $user5->roles()->sync($user);
+
     }
 }

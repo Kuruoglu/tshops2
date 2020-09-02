@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Anons;
+use App\User;
 class AnonsSeeder extends Seeder
 {
     /**
@@ -11,6 +12,9 @@ class AnonsSeeder extends Seeder
      */
     public function run()
     {
+        $user = User::where('id', 3)->first();
+
+
         $anons1 = new Anons();
         $anons1->category_id = '1';
         $anons1->url = 'Http://google.com';
@@ -23,6 +27,7 @@ class AnonsSeeder extends Seeder
         $anons1->date_purchase = '01.09.2020';
         $anons1->save();
 
+
         $anons2 = new Anons();
         $anons2->category_id = '2';
         $anons2->url = 'Http://google.com';
@@ -34,5 +39,6 @@ class AnonsSeeder extends Seeder
         $anons2->user_id = '2';
         $anons2->date_purchase = '01.09.2020';
         $anons2->save();
+        $anons2->users()->sync($user->id);
     }
 }

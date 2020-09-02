@@ -22,6 +22,8 @@ class OrderSeeder extends Seeder
        $order1->post_office = 'новая почта';
        $order1->post_office_number = '42';
        $order1->status_id = '1';
+       $order1->user_id = '2';
+       $order1->anons_id = '2';
        $order1->save();
 
         $order2 = new Order();
@@ -35,6 +37,9 @@ class OrderSeeder extends Seeder
         $order2->post_office = 'новая почта';
         $order2->post_office_number = '42';
         $order2->status_id = '2';
+        $order2->user_id = '2';
+        $order2->anons_id = '2';
+
         $order2->save();
 
         $order3 = new Order();
@@ -48,6 +53,9 @@ class OrderSeeder extends Seeder
         $order3->post_office = 'новая почта';
         $order3->post_office_number = '42';
         $order3->status_id = '3';
+        $order3->user_id = '2';
+        $order3->anons_id = '2';
+
         $order3->save();
 
         $order4 = new Order();
@@ -61,6 +69,9 @@ class OrderSeeder extends Seeder
         $order4->post_office = 'новая почта';
         $order4->post_office_number = '42';
         $order4->status_id = '4';
+        $order4->user_id = '2';
+        $order4->anons_id = '2';
+
         $order4->save();
 
         $order5 = new Order();
@@ -74,6 +85,9 @@ class OrderSeeder extends Seeder
         $order5->post_office = 'новая почта';
         $order5->post_office_number = '42';
         $order5->status_id = '5';
+        $order5->user_id = '2';
+        $order5->anons_id = '2';
+
         $order5->save();
 
         $order6 = new Order();
@@ -87,6 +101,9 @@ class OrderSeeder extends Seeder
         $order6->post_office = 'новая почта';
         $order6->post_office_number = '42';
         $order6->status_id = '1';
+        $order6->user_id = '2';
+        $order6->anons_id = '2';
+
         $order6->save();
 
         $order7 = new Order();
@@ -100,6 +117,9 @@ class OrderSeeder extends Seeder
         $order7->post_office = 'новая почта';
         $order7->post_office_number = '42';
         $order7->status_id = '2';
+        $order7->user_id = '2';
+        $order7->anons_id = '2';
+
         $order7->save();
 
         $order8 = new Order();
@@ -113,6 +133,9 @@ class OrderSeeder extends Seeder
         $order8->post_office = 'новая почта';
         $order8->post_office_number = '42';
         $order8->status_id = '3';
+        $order8->user_id = '2';
+        $order8->anons_id = '2';
+
         $order8->save();
 
         $order9 = new Order();
@@ -126,6 +149,9 @@ class OrderSeeder extends Seeder
         $order9->post_office = 'новая почта';
         $order9->post_office_number = '42';
         $order9->status_id = '4';
+        $order9->user_id = '2';
+        $order9->anons_id = '2';
+
         $order9->save();
 
         $order10 = new Order();
@@ -139,6 +165,9 @@ class OrderSeeder extends Seeder
         $order10->post_office = 'новая почта';
         $order10->post_office_number = '42';
         $order10->status_id = '5';
+        $order10->user_id = '2';
+        $order10->anons_id = '2';
+
         $order10->save();
 
         $order11 = new Order();
@@ -152,6 +181,9 @@ class OrderSeeder extends Seeder
         $order11->post_office = 'новая почта';
         $order11->post_office_number = '42';
         $order11->status_id = '1';
+        $order11->anons_id = '2';
+        $order11->user_id = '2';
+
         $order11->save();
 
         $order12 = new Order();
@@ -165,6 +197,9 @@ class OrderSeeder extends Seeder
         $order12->post_office = 'новая почта';
         $order12->post_office_number = '42';
         $order12->status_id = '1';
+        $order12->user_id = '2';
+        $order12->anons_id = '2';
+
         $order12->save();
 
         $order13 = new Order();
@@ -178,6 +213,9 @@ class OrderSeeder extends Seeder
         $order13->post_office = 'новая почта';
         $order13->post_office_number = '42';
         $order13->status_id = '1';
+        $order13->anons_id = '2';
+        $order13->user_id = '2';
+
         $order13->save();
 
         $order14 = new Order();
@@ -191,6 +229,9 @@ class OrderSeeder extends Seeder
         $order14->post_office = 'новая почта';
         $order14->post_office_number = '42';
         $order14->status_id = '1';
+        $order14->user_id = '2';
+        $order14->anons_id = '2';
+
         $order14->save();
 
 

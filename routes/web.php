@@ -42,6 +42,7 @@ Route::group([
     Route::get('/order/{id}', 'OrderStatusController@status');
 //    Route::get('/anons/all', 'AnonsController@index');
     Route::resource('/anons', 'AnonsController');
+    Route::post('/anons/user/add', 'AnonsController@add');
     Route::resource('/order', 'OrderController');
 
 

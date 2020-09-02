@@ -6,7 +6,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Traits\HasPermissionsTrait;
-
+use App\Order;
+use App\Anons;
 
 class User extends Authenticatable
 {
@@ -51,7 +52,12 @@ class User extends Authenticatable
 
     public function anonses() {
 
-        return $this->hasMany(Anons::class);
+        return $this->belongsToMany(Anons::class);
 
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
     }
 }

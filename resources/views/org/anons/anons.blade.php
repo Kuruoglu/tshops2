@@ -29,7 +29,7 @@
                         </a>
 
                     </td>
-                    <td>{{$anons->user->name}}</td>
+                    <td>{{$anons->user_id}}</td>
                     <td>{{$anons->date_purchase}}</td>
                     <td>
                         <div>

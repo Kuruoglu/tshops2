@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Org;
 use App\Brand;
 use App\Anons;
 use App\Category;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -16,7 +17,8 @@ class AnonsController extends Controller
      */
     public function index()
     {
-       $anonses = Anons::with('brand', 'user')->get();
+       $anonses = Anons::with('brand', 'users.orders')->get();
+//       dd($anonses);
        return view('org.anons.anons', compact('anonses'));
     }
 
@@ -46,6 +48,23 @@ class AnonsController extends Controller
     }
 
     /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function add(Request $request)
+    {
+//        dd($request->all());
+        $anons = Anons::find($request->anons_id);
+        $user = User::find($request->user_id);
+
+        $anons->users()->attach($user);
+
+        return redirect()->route('anons.show', $anons);
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  \App\Anons  $anon
@@ -54,8 +73,10 @@ class AnonsController extends Controller
     public function show(Anons $anon)
     {
 
-        dd($anon);
-        $anons = Anons::with('users')->where('id', $anon->id);
+//        dd($anon);
+        $anons = Anons::with('users', 'orders')->where('id', $anon->id)->first();
+        $sum = $anons->orders->sum('price');
+//        dd($sum);
         return view('org.anons.show', compact('anons'));
     }
 
