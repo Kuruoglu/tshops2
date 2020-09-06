@@ -55,6 +55,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Anons::class);
 
     }
+    public function anons() {
+
+        return $this->hasOne(Anons::class);
+
+    }
 
     public function orders()
     {
