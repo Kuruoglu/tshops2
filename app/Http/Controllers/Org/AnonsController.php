@@ -67,9 +67,9 @@ class AnonsController extends Controller
 
 //        Mail::to('7395836@gmail.com')->send(new NewUserNotification());
 
-        Mail::send('mails.register', [], function($m){
-            $m->from('kudriashova.ag@gmail.com')->to('7395836@gmail.com')->subject('Welcome');
-        });
+//        Mail::send('mails.register', [], function($m){
+//            $m->from('kudriashova.ag@gmail.com')->to('7395836@gmail.com')->subject('Welcome');
+//        });
         return redirect()->route('anons.show', $anons);
     }
 

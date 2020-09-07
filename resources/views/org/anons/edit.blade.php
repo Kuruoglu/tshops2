@@ -2,7 +2,7 @@
 
 
 @section('content')
-{{$anons}}
+
     <div class="container">
         <form action="/organizer/anons/{{$anons->id}}" enctype="multipart/form-data" method="post">
             @csrf
