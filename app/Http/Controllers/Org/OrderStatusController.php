@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Org;
 
 use App\Http\Controllers\Controller;
 use App\Order;
+use App\Status;
 use Illuminate\Http\Request;
 
 class OrderStatusController extends Controller
@@ -16,8 +17,9 @@ class OrderStatusController extends Controller
     public function all()
     {
 
-        $orders = Order::all();
-        return view('org.orders', compact('orders'));
+        $orders = Order::with('status')->get();
+        $statuses = Status::all();
+        return view('org.orders', compact('orders', 'statuses'));
     }
 
 
@@ -30,7 +32,8 @@ class OrderStatusController extends Controller
     public function status($id)
     {
         $orders = Order::where('status_id', $id)->get();
-        return view('org.orders', compact('orders'));
+        $statuses = Status::all();
+        return view('org.orders', compact('orders', 'statuses'));
     }
 
     /**

@@ -49,29 +49,7 @@ class AnonsController extends Controller
         return redirect()->route('anons.index');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function add(Request $request)
-    {
-//        dd($request->all());
-        $anons = Anons::with('users')->find($request->anons_id);
-        $user = User::find($request->user_id);
-//        dd($anons->users->contains($user));
-        if (!$anons->users->contains($user)) {
-            $anons->users()->attach($user);
-        }
 
-//        Mail::to('7395836@gmail.com')->send(new NewUserNotification());
-
-//        Mail::send('mails.register', [], function($m){
-//            $m->from('kudriashova.ag@gmail.com')->to('7395836@gmail.com')->subject('Welcome');
-//        });
-        return redirect()->route('anons.show', $anons);
-    }
 
     /**
      * Display the specified resource.

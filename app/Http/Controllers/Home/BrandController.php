@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers\Home;
 
-use App\Anons;
-use App\Brand;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class MainController extends Controller
+class BrandController extends Controller
 {
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $brands = Brand::all();
-        $anonses = Anons::with('user','brand', 'users.orders')->get();
-       return view('home.index', compact('brands', 'anonses'));
+        //
     }
 
     /**

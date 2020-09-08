@@ -14,10 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group([
-
+    'prefix' => 'home',
     'namespace' => 'Home'
 ], function () {
     Route::get('/', 'MainController@index')->name('home');
+    Route::resource('/brand', 'BrandController');
+    Route::get('/anons/{id}', 'AnonsController@show')->name('show.anons');
+    Route::post('/anons/user/add', 'AnonsController@add');
+
+
+
 });
 
 Route::group([
@@ -28,6 +34,7 @@ Route::group([
     Route::get('/', 'AdminController@index');
     Route::resource('/category', 'CategoryController');
     Route::resource('/user', 'UserController');
+    Route::resource('/brand', 'BrandController');
 });
 
 Route::group([
@@ -42,7 +49,6 @@ Route::group([
     Route::get('/order/{id}', 'OrderStatusController@status');
 //    Route::get('/anons/all', 'AnonsController@index');
     Route::resource('/anons', 'AnonsController');
-    Route::post('/anons/user/add', 'AnonsController@add');
     Route::resource('/order', 'OrderController');
 
 

@@ -39,3 +39,23 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+
+//
+// document.querySelector('.status').addEventListener('change', (event) => {
+//     event.preventDefault()
+//     console.log('cange')
+//     let data = new FormData(document.querySelector('.status'))
+//     console.log(data)
+//     axios.put("/organizer/order", data)
+//         .then((res) => {
+//             console.log('res com')
+//             Location.reload()
+//         })
+//         .catch((e) => {
+//             console.log(e)
+//         })
+//     console.log('end')
+
+
+// })

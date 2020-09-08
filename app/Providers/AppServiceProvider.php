@@ -50,7 +50,27 @@ class AppServiceProvider extends ServiceProvider
                     'url'   => 'admin/user',
                     //'active' => ['users', 'categories'],
                 ]);
-                $event->menu->add('--------------');
+                $event->menu->add([
+                    'key'   => 'catalog',
+                    'text'  => 'Каталог',
+                    'label' => 1,
+                    'label_color' => 'light',
+                    'icon'  => 'far fa-fw fa-user',
+
+                    'url'   => '#',
+                    'submenu' => [
+                        [
+                            'key' => 'brands',
+                            'text' => 'Бренды',
+                            'label' => 1,
+                            'label_color' => 'light',
+                            'url'   => '/admin/brand',
+                        ],
+
+                    ]
+
+                ]);
+
                 $event->menu->add([
                     'key'   => 'orders',
                     'text'  => 'Заказы',
@@ -111,26 +131,6 @@ class AppServiceProvider extends ServiceProvider
 
 
         }else {
-
-
-//                $event->menu->add([
-//                    'key'   => 'categories',
-//                    'text'  => 'Categories',
-//                    'label' => Category::all()->count(),
-//                    'label_color' => 'light',
-//                    'icon'  => 'far fa-fw fa-file',
-//                    'url'   => 'admin/category',
-//                ]);
-//                $event->menu->add([
-//                    'key'   => 'users',
-//                    'text'  => 'Users',
-//                    'label' => User::all()->count(),
-//                    'label_color' => 'light',
-//                    'icon'  => 'far fa-fw fa-user',
-//                    'url'   => 'admin/user',
-//                    //'active' => ['users', 'categories'],
-//                ]);
-//                $event->menu->add('--------------');
                 $event->menu->add([
                     'key'   => 'orders',
                     'text'  => 'Заказы',
@@ -194,12 +194,7 @@ class AppServiceProvider extends ServiceProvider
                     'icon'  => 'far fa-fw fa-user',
                     'url'   => '/organizer/anons/',
                 ]);
-            $event->menu->add([
-                'key'   => 'product',
-                'text'  => 'Товары',
-                'icon'  => 'far fa-fw fa-user',
-                'url'   => '/organizer/product/',
-            ]);
+
             }
         });
     }

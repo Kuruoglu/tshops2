@@ -1,7 +1,6 @@
 @extends('admin.layouts.index')
 
-@section('content')
-    @extends('admin.layouts.index')
+
 
 
 @section('content')
@@ -47,4 +46,3 @@
     </div>
 @stop
 
-@stop

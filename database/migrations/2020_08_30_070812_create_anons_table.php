@@ -15,6 +15,8 @@ class CreateAnonsTable extends Migration
     {
         Schema::create('anons', function (Blueprint $table) {
             $table->id();
+            $table->string('title', 100);
+            $table->text('short_desc', 200);
             $table->foreignId('category_id')->constrained();
             $table->string('url');
             $table->foreignId('brand_id')->constrained();

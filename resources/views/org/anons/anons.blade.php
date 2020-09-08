@@ -25,7 +25,7 @@
 
                     <td>
                         <a href="{{route('anons.show', $anons)}}">
-                            <img src=" {{$anons->brand->img}}" alt=" {{$anons->brand->name}}">
+                            <img src=" {{$anons->brand->img}}" alt=" {{$anons->brand->name}}" style="width: 50px">
                         </a>
 
                     </td>

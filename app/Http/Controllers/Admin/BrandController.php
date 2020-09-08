@@ -1,20 +1,23 @@
 <?php
 
-namespace App\Http\Controllers\Home;
+namespace App\Http\Controllers\Admin;
 
-use App\Anons;
 use App\Brand;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 
-class MainController extends Controller
+class BrandController extends Controller
 {
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $brands = Brand::all();
-        $anonses = Anons::with('user','brand', 'users.orders')->get();
-       return view('home.index', compact('brands', 'anonses'));
+        return view('admin.brand.index', compact('brands'));
     }
 
     /**
@@ -24,7 +27,7 @@ class MainController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.brand.create');
     }
 
     /**
@@ -35,7 +38,8 @@ class MainController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $brand = Brand::create($request->all());
+       return redirect( route('brand.index') );
     }
 
     /**
@@ -57,7 +61,8 @@ class MainController extends Controller
      */
     public function edit($id)
     {
-        //
+        $brand = Brand::find($id);
+        return view('admin.brand.edit', compact('brand'));
     }
 
     /**
@@ -69,7 +74,9 @@ class MainController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $brand = Brand::find($id);
+        $brand->update($request->all());
+        return redirect(route('brand.index'));
     }
 
     /**
@@ -80,6 +87,7 @@ class MainController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $brand = Brand::findOrFail($id)->delete();
+        return redirect(route('brand.index'));
     }
 }

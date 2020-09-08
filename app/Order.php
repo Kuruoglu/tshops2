@@ -22,6 +22,11 @@ class Order extends Model
         return $this->belongsTo(Anons::class);
     }
 
+    public function status()
+    {
+        return $this->belongsTo(Status::class);
+    }
+
 
 
 //    public function setStatusIdAttribute($value)

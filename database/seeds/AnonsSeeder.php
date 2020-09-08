@@ -17,6 +17,9 @@ class AnonsSeeder extends Seeder
 
         $anons1 = new Anons();
         $anons1->category_id = '1';
+        $anons1->title = 'Выкуп Puma';
+        $anons1->short_desc = 'Сегодня до конца дня нужно срочно выкупить пуму';
+
         $anons1->url = 'Http://google.com';
         $anons1->brand_id = '2';
         $anons1->service_tax = '10';
@@ -30,6 +33,8 @@ class AnonsSeeder extends Seeder
 
         $anons2 = new Anons();
         $anons2->category_id = '2';
+        $anons2->title = 'Выкуп Puma';
+        $anons2->short_desc = 'Сегодня до конца дня нужно срочно выкупить пуму';
         $anons2->url = 'Http://google.com';
         $anons2->brand_id = '4';
         $anons2->service_tax = '15';
