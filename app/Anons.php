@@ -37,4 +37,12 @@ class Anons extends Model
     {
         return $this->hasMany(Order::class);
     }
+
+    public function setImgAttribute($value)
+    {
+        $fname = $value->getClientOriginalName();
+        $value->move(public_path('uploads'), $fname);
+        $this->attributes['img'] = '/uploads/' . $fname;
+    }
+
 }

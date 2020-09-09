@@ -4,9 +4,8 @@
 @section('content')
 {{--{{$orders}}--}}
     <div class="container">
-        <a href="{{route('order.create')}}" class="btn btn-dark">Создать заказ</a>
+{{--        <a href="{{route('order.create')}}" class="btn btn-dark">Создать заказ</a>--}}
         <table class="table">
-            <caption>Категории</caption>
             <thead>
             <tr>
                 <th>#</th>
@@ -57,7 +56,7 @@
                     </td>
                     <td class="d-flex justify-content-lg-end">
                         <a href="#" class="btn btn-success"> <i class="fa fa-edit"></i></a>
-                        <form action="#" method="post">
+                        <form action="{{route('order.destroy', $order)}}" method="post">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger"> <i class="fa fa-trash"></i></button>
@@ -73,10 +72,12 @@
 
 @section('js')
     <script>
-      document.querySelector('.status').addEventListener('change', (event) => {
-          event.preventDefault()
-          console.log('cange')
-          document.querySelector('.status').submit()
+        const forms =document.querySelectorAll('.status')
+        forms.forEach(form => {
+            form.addEventListener('change', evt => {
+                evt.preventDefault()
+                form.submit()
+            })
         })
     </script>
 @stop

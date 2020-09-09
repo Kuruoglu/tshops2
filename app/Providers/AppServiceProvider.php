@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Category;
 use App\Order;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Events\Dispatcher;
 use JeroenNoten\LaravelAdminLte\Events\BuildingMenu;
@@ -143,42 +144,42 @@ class AppServiceProvider extends ServiceProvider
                         [
                             'key' => 'allOrder',
                             'text' => 'Все заказы',
-                            'label' => Order::all()->count(),
+                            'label' => Order::where('user_id', Auth::user()->id)->count(),
                             'label_color' => 'light',
                             'url'   => 'organizer/order/all',
                         ],
                         [
                             'key' => 'newOrder',
                             'text' => 'Новые',
-                            'label' => Order::where('status_id', 1)->count(),
+                            'label' => Order::where('status_id', 1)->where('user_id', Auth::user()->id)->count(),
                             'label_color' => 'light',
                             'url'   => 'organizer/order/1',
                         ],
                         [
                             'key' => 'processOrder',
                             'text' => 'В процессе',
-                            'label' => Order::where('status_id', 2)->count(),
+                            'label' => Order::where('status_id', 2)->where('user_id', Auth::user()->id)->count(),
                             'label_color' => 'light',
                             'url'   => 'organizer/order/2',
                         ],
                         [
                             'key' => 'toSendOrder',
                             'text' => 'На отправку',
-                            'label' => Order::where('status_id', 4)->count(),
+                            'label' => Order::where('status_id', 4)->where('user_id', Auth::user()->id)->count(),
                             'label_color' => 'light',
                             'url'   => 'organizer/order/4',
                         ],
                         [
                             'key' => 'completeOrder',
                             'text' => 'Завершенные',
-                            'label' => Order::where('status_id', 3)->count(),
+                            'label' => Order::where('status_id', 3)->where('user_id', Auth::user()->id)->count(),
                             'label_color' => 'light',
                             'url'   => 'organizer/order/3',
                         ],
                         [
                             'key' => 'canceledOrder',
                             'text' => 'Отмененные',
-                            'label' => Order::where('status_id', 5)->count(),
+                            'label' => Order::where('status_id', 5)->where('user_id', Auth::user()->id)->count(),
                             'label_color' => 'light',
                             'url'   => 'organizer/order/5',
                         ],

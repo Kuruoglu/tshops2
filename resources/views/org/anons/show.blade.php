@@ -1,18 +1,21 @@
 @extends('admin.layouts.index')
 
 @section('content')
+{{--    {{$anons}}--}}
     <div class="jumbotron small-box">
-{{--        {{$anons}}--}}
         <div class="image">
 
         </div>
-        <div>
-            <div class="d-flex justify-content-between mb-5">
+        <div class="d-flex ">
+            <div class="mr-5">
+                <img src="{{$anons->brand->img}}" alt="{{$anons->brand->name}}" style="width: 150px">
+            </div>
+            <div class=" mb-5">
                 <div>Комиссия организатора <span>{{$anons->service_tax}} %</span></div>
-                <div>Скидка на сайте <span>{{$anons->price_off}} %</span></div>
                 <div>Дополнительная скидка <span>{{$anons->additional_off}} %</span></div>
                 <div>Дата выкупа <span>{{$anons->date_purchase}}</span></div>
             </div>
+        </div>
             <div class="d-flex mb-5">
                 <div class="mr-5">Необходимо для выкупа <span>{{$anons->need_cart}}</span></div>
                 <div class="mr-5">Всего собранно
@@ -21,32 +24,80 @@
                     </span>
                 </div>
                 <div class="mr-5" >Количество участников <span>{{$anons->users->count()}}</span></div>
+                <div class="mr-5" >Количество Заказов <span>{{$anons->orders->count()}}</span></div>
             </div>
-        </div>
         <hr>
         <div class="d-flex">
-            <div class="border-left">
-                <p>Посчитать стоимость товара</p>
-                <label for="price">Цена на сайте</label>
-                <input type="text" name="price" id="price">
-                <label for="total">Итого</label>
-                <input type="text" name="total" id="total" value="">
-            </div>
-            <div>
-                <form action="/organizer/anons/user/add" method="post">
 
-                    @csrf
-                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-                    <input type="hidden" name="anons_id" value="{{$anons->id}}">
 
-                    <button type="submit" class="btn btn-primary">Стать участником</button>
-                </form>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                     Добавить Заказ
                 </button>
             </div>
         </div>
         <hr>
+        <div>
+            <span>Участники:</span>
+            <table class="table">
+
+                <tbody>
+
+                @foreach($anons->users as $user)
+                <tr>
+                    <td style="width: 50px">{{$loop->iteration}}</td>
+                    <td style="width: 50px">{{$user->img}}</td>
+                    <td>
+                        <a data-toggle="collapse" href="#collapseExample{{$user->id}}" aria-expanded="false" aria-controls="collapseExample">{{$user->name}}</a>
+                        <div class="collapse" id="collapseExample{{$user->id}}">
+                            <div class="card card-block">
+                               <table>
+                                   <thead>
+                                   <tr>
+                                       <th>#</th>
+                                       <th>Ссылка</th>
+                                       <th>Название</th>
+                                       <th>Количество</th>
+                                       <th>Цена</th>
+                                       <th>Размер</th>
+                                       <th>Цвет</th>
+                                       <th></th>
+                                   </tr>
+                                   </thead>
+                                   <tbody>
+                                       @foreach ($orders as $order)
+                                   <tr>
+                                           <td>{{$loop->iteration}}</td>
+                                           <td>{{$order->url}}</td>
+                                           <td></td>
+                                           <td>{{$order->qty}}</td>
+                                           <td>{{$order->price}}</td>
+                                           <td>{{$order->size}}</td>
+                                           <td>{{$order->color}}</td>
+                                           <td></td>
+
+                                   </tr>
+                                       @endforeach
+                                   </tbody>
+                               </table>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <form action="/home/anons/user/add" method="post">
+
+                            @csrf
+                            <input type="hidden" name="user_id" value="{{$user->id}}">
+                            <input type="hidden" name="anons_id" value="{{$anons->id}}">
+                            <button  type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                        </form>
+
+                    </td>
+
+                </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
 
 
     </div>

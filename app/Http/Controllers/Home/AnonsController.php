@@ -68,10 +68,12 @@ class AnonsController extends Controller
 //        dd($anons->users->contains($user));
         if (!$anons->users->contains($user)) {
             $anons->users()->attach($user);
+            return back();
         }
         else {
             $anons->users()->detach($user);
            \App\Order::where('user_id', $user->id)->where('anons_id', $anons->id)->delete();
+            return back();
         }
 
 //        Mail::to('7395836@gmail.com')->send(new NewUserNotification());

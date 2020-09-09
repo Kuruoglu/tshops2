@@ -2,7 +2,6 @@
 
 
 @section('content')
-{{--    {{$anonses}}--}}
     <div class="container">
         <a href="{{route('anons.create')}}" class="btn btn-primary mb-2">Создать анонс</a>
         <table class="table">
@@ -11,10 +10,10 @@
                 <tr>
 
                     <th>Бренд</th>
-                    <th>Организатор</th>
+
                     <th>Дата выкупа</th>
                     <th>Корзина</th>
-                    <th>Стать участником</th>
+                    <th></th>
                     <th></th>
                 </tr>
             </thead>
@@ -22,14 +21,13 @@
             <tbody>
             @foreach($anonses as $anons)
                 <tr class="border-bottom">
-
                     <td>
                         <a href="{{route('anons.show', $anons)}}">
                             <img src=" {{$anons->brand->img}}" alt=" {{$anons->brand->name}}" style="width: 50px">
                         </a>
+{{--                        {{$anons}}--}}
 
                     </td>
-                    <td>{{$anons->user->name}}</td>
                     <td>{{$anons->date_purchase}}</td>
                     <td>
                         <div>
@@ -38,11 +36,15 @@
                         </div>
                         <div>
                             <span>Уже собранно</span>
-                            <span class="ml-5">{{$anons->need_cart}}</span>
+                            <span class="ml-5"> {{$anons->orders->sum('price')}}</span>
+                        </div>
+                        <div>
+                            <span>Участников</span>
+                            <span class="ml-5"> {{$anons->users->count()}}</span>
                         </div>
 
                     </td>
-                    <td><a href="{{route('anons.show', $anons)}}" class="btn btn-primary">Стать участником</a></td>
+                    <td><a href="" class="btn btn-primary">Сформировать выкуп</a></td>
 
 
                     <td class="d-flex justify-content-lg-end">

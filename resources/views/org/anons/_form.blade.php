@@ -53,27 +53,26 @@
             @endforeach
         @endif
     </select>
-    <div class="input-group-prepend">
-        <span class="input-group-text">Услуги организатора %</span>
-        <input type="text" class="form-control" name="service_tax">
-    </div>
+
 </div>
 
 
-<div class="input-group mb-3 row-cols-12">
+<div class="input-group mb-3 row">
 
-    <div class="input-group-prepend">
-        <span class="input-group-text">Скидка </span>
-        <input type="text" class="form-control" name="price_off" value="{{ old('price_off', $anons['price_off'] ?? '')}}">
+{{--    <div class="input-group-prepend">--}}
+{{--        <span class="input-group-text">Скидка </span>--}}
+{{--        <input type="text" class="form-control" name="price_off" value="{{ old('price_off', $anons['price_off'] ?? '')}}">--}}
+{{--    </div>--}}
+    <div class="input-group-prepend col-md-4">
+        <span class="input-group-text">Услуги организатора %</span>
+        <input type="text" class="form-control" name="service_tax" value="{{ old('service_tax', $anons['service_tax'] ?? '')}}">
     </div>
-    <div class="input-group-prepend">
+    <div class="input-group-prepend col-md-4">
         <span class="input-group-text">Доп.Скидка </span>
         <input type="text" class="form-control" name="additional_off" value="{{ old('additional_off', $anons['additional_off'] ?? '')}}">
     </div>
-    <div class="input-group-prepend ">
-        <div class="input-group-prepend ml-3">
-            <span class="input-group-text">Необходимая сумма для выкупа</span>
-        </div>
+    <div class="input-group-prepend col-md-4">
+            <span class="input-group-text">Необходимая сумма</span>
         <input type="text" class="form-control" name="need_cart" value="{{ old('need_cart', $anons['need_cart'] ?? '')}}">
 
     </div>
