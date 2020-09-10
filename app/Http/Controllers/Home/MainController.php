@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Home;
 use App\Anons;
 use App\Brand;
 use App\Http\Controllers\Controller;
+use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,10 +15,15 @@ class MainController extends Controller
 
     public function index()
     {
+
         $brands = Brand::all();
         $anonses = Anons::with('user','brand', 'users.orders')->get();
-        $user = User::where('id', Auth::user()->id)->first();
-       return view('home.index', compact('brands', 'anonses', 'user'));
+        if (Auth::user()) {
+            $user = User::where('id', Auth::user()->id)->first();
+            return view('home.index', compact('brands', 'anonses', 'user'));
+        }
+
+       return view('home.index', compact('brands', 'anonses'));
     }
 
     /**

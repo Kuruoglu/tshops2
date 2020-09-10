@@ -59,7 +59,7 @@ class UserSeeder extends Seeder
         $user5->email = 'user4@thomas.com';
         $user5->password = '12345678';
         $user5->save();
-        $user5->roles()->sync($user);
+        $user5->roles()->attach($user->id);
 
     }
 }

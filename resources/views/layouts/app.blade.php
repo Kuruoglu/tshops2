@@ -18,6 +18,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+
 </head>
 <body>
     <div id="app">
@@ -26,7 +28,7 @@
                 <a class="navbar-brand" href="{{ url('/home') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-
+{{--                    {{dd(auth()->user()->hasRole('admin'))}}--}}
                 @if(auth()->check() && auth()->user()->hasRole('admin'))
                 <a class="navbar-brand" href="{{ url('/admin') }}">
                     {{ 'Кабинет' }}
@@ -39,7 +41,7 @@
 
                 @elseif (auth()->check() && auth()->user()->hasRole('user'))
 
-                    <a class="navbar-brand" href="{{ url('/user') }}">
+                    <a class="navbar-brand" href="{{ route('user.profile', Auth::user()->id) }}">
                         {{ 'Кабинет' }}
                     </a>
                 @else
@@ -96,7 +98,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
     </div>

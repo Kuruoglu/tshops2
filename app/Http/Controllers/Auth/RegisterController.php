@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Mail\NewUserNotification;
 use App\Providers\RouteServiceProvider;
+use App\Role;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -66,13 +67,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
-        return User::create([
+        $userRole = Role::where('slug', 'user')->first();
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-                Mail::to($data['email'])->send(new NewUserNotification($data))
+            'password' => $data['password'],
         ]);
-//        dd($data['email']);
+        $user->roles()->attach($userRole);
+        ////                Mail::to($data['email'])->send(new NewUserNotification($data))
+        return $user;
     }
 }

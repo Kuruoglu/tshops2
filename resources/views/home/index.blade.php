@@ -18,8 +18,11 @@
                 <div class="modal-body ">
                     <p>Ваших учетных данных не достаточно для совершения заказов.</p>
                     <p>Пожалуйста заполните ваш профиль!</p>
-                    <a href="{{'/home/user/profile'}}" class="btn btn-primary">В личный кабинет</a>
+                    @if(isset($user))
+
+                    <a href="{{route('user.profile', $user->id)}}" class="btn btn-primary">В личный кабинет</a>
 {{--                    @include('home.anons.modal')--}}
+                    @endif
                 </div>
                 <div class="modal-footer d-flex justify-content-between">
 

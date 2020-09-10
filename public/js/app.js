@@ -49743,7 +49743,11 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app'
 });
-console.log('>>>>>>>>>>>>>>>>>>.');
+$(document).ready(function () {
+  $('#sidebarCollapse').on('click', function () {
+    $('#sidebar').toggleClass('active');
+  });
+});
 
 /***/ }),
 

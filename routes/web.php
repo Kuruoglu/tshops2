@@ -21,6 +21,8 @@ Route::group([
     Route::resource('/brand', 'BrandController');
     Route::get('/anons/{id}', 'AnonsController@show')->name('show.anons');
     Route::post('/anons/user/add', 'AnonsController@add');
+    Route::get('/user/profile/{id}', 'ProfileController@index')->name('user.profile');
+    Route::put('/user/update/{id}', 'ProfileController@update')->name('update.profile');
 
 
 

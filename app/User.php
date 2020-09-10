@@ -19,7 +19,21 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'company', 'img', 'phone', 'role'
+        'name',
+        'last_name',
+        'email',
+        'password',
+        'company',
+        'img',
+        'phone',
+        'role',
+        'city',
+        'street',
+        'bild_number',
+        'flat',
+        'zip',
+        'post_office',
+        'post_office_number'
     ];
 
     /**
@@ -64,5 +78,12 @@ class User extends Authenticatable
     public function orders()
     {
         return $this->hasMany(Order::class);
+    }
+
+    public function setImgAttribute($value)
+    {
+        $fname = $value->getClientOriginalName();
+        $value->move(public_path('uploads'), $fname);
+        $this->attributes['img'] = '/uploads/' . $fname;
     }
 }
