@@ -16,6 +16,9 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+    {{-- Favicon --}}
+    <link href="{{asset('css/all.css')}}" rel="stylesheet">
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
@@ -49,6 +52,9 @@
                         {{ 'Кабинет' }}
                     </a>
                 @endif
+                <a class="navbar-brand" href="{{'/product'}}">
+                    {{ 'Пристрой' }}
+                </a>
 {{--                @if(auth()->check() && auth()->user()->hasRole('organizer'))--}}
 {{--                   --}}
 {{--                @endif--}}

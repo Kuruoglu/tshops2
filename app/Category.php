@@ -23,9 +23,15 @@ class Category extends Model
     {
         return $this->belongsToMany(Anons::class);
     }
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 
     public function setSlugAttribute($value)
     {
         $this->attributes['slug'] = \Str::slug(empty($value) ? $this->name : $value, '-');
     }
+
+
 }

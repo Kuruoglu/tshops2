@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Brand;
+use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+       return view('product.index');
     }
 
     /**
@@ -24,7 +26,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+
+        $categories = Category::all();
+        $brands = Brand::all();
+
+        return view('product.create', compact( 'categories', 'brands'));
     }
 
     /**
@@ -35,7 +41,8 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = Product::create($request->all());
+        return back();
     }
 
     /**
@@ -46,7 +53,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        $prod = Product::findOrFail($product->id)->first();
+        return view('product.show', compact('prod'));
     }
 
     /**
@@ -57,7 +65,11 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        $prod = Product::findOrFail($product->id)->first();
+        $categories = Category::all();
+        $brands = Brand::all();
+        return view('product.edit', compact('$prod', 'categories', 'brands'));
+
     }
 
     /**
@@ -69,7 +81,10 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $item = Product::findOrFail($product->id)->first();
+        $item->update($request->all());
+        return back();
+
     }
 
     /**
@@ -80,6 +95,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+       Product::findOrFail($product->id)->delete();
+       return back();
     }
 }

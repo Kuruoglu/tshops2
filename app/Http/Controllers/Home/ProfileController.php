@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
+use App\Order;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,8 +12,14 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        $user = User::find(Auth::user()->id);
-        return view('home.profile.index', compact('user'));
+        if (auth()->check()) {
+            $user = User::find(Auth::user()->id);
+            return view('home.profile.index', compact('user'));
+        }
+        else {
+            return redirect(route('home'));
+        }
+
     }
 
     /**
@@ -29,4 +36,23 @@ class ProfileController extends Controller
         $user->update($request->all());
         return back();
     }
+
+    public function orders()
+    {
+//        dd('asd');
+        if (auth()->check()) {
+            $orders = Order::where('user_id', Auth::user()->id)->get();
+            return view('home.profile.orders', compact('orders'));
+        }
+        else {
+            return redirect(route('home'));
+        }
+
+    }
 }
+
+
+
+
+
+

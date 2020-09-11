@@ -3,7 +3,7 @@
 @section('sidebar')
     @parent
         <div class="container py-4 " id="content">
-            {{$user}}
+{{--            {{$user}}--}}
             <form action="{{route('update.profile', $user->id)}}"   method="post">
                 @csrf
                 @method('PUT')

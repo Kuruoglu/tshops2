@@ -10996,3 +10996,22 @@ a.text-dark:focus {
   flex: 1;
 }
 
+.link_add-button {
+  text-decoration: none;
+}
+
+.wrapper__add-button {
+  display: flex;
+  min-width: 300px;
+  max-width: 300px;
+  min-height: 300px;
+}
+
+.wrapper__add-button .add-button__container {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  background-color: #858789;
+}
+

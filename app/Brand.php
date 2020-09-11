@@ -14,6 +14,11 @@ class Brand extends Model
         return $this->belongsTo(Anons::class);
     }
 
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
     public function setSlugAttribute($value)
     {
         $this->attributes['slug'] = Str::slug(empty($value) ? $this->name : $value, '-');

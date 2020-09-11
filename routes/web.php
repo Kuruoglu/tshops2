@@ -21,12 +21,26 @@ Route::group([
     Route::resource('/brand', 'BrandController');
     Route::get('/anons/{id}', 'AnonsController@show')->name('show.anons');
     Route::post('/anons/user/add', 'AnonsController@add');
-    Route::get('/user/profile/{id}', 'ProfileController@index')->name('user.profile');
     Route::put('/user/update/{id}', 'ProfileController@update')->name('update.profile');
+    Route::get('/user/profile/order/', 'ProfileController@orders')->name('profile.orders');
+    Route::get('/user/profile/anons/', 'ProfileController@anonses')->name('profile.anonses');
+    Route::get('/user/profile/product/', 'ProfileController@products')->name('profile.product');
+    Route::get('/user/profile/message/', 'ProfileController@messages')->name('profile.message');
+    Route::get('/user/profile/report/', 'ProfileController@report')->name('profile.report');
+    Route::get('/user/profile/{id}', 'ProfileController@index')->name('user.profile');
 
 
 
 });
+Route::group([
+    'prefix' => 'product',
+],
+    function() {
+        Route::resource('/', 'ProductController');
+});
+
+
+
 
 Route::group([
     'prefix' => 'admin',

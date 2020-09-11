@@ -86,4 +86,9 @@ class User extends Authenticatable
         $value->move(public_path('uploads'), $fname);
         $this->attributes['img'] = '/uploads/' . $fname;
     }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }
