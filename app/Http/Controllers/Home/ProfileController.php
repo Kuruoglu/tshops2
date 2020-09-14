@@ -52,7 +52,7 @@ class ProfileController extends Controller
     }
     public function products()
     {
-        $products = Product::where('user_id', Auth::user()->id)->get();
+         $products = Product::where('user_id', Auth::user()->id)->get();
 
         return view('home.profile.product', compact('products'));
     }

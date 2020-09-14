@@ -1,7 +1,7 @@
 @if (auth()->check())
     <input type="hidden" name="user_id" value="{{\Auth::user()->id}}">
 @endif
-<input type="hidden" name="slug">
+<input type="hidden" name="slug" value="">
 <div class="form-group row ">
     <label for="name" class="col-md-2 col-form-label">Название продукта</label>
     <div class="col-md-10">

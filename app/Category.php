@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Anons;
+use Illuminate\Support\Str;
 
 class Category extends Model
 {
@@ -30,7 +31,7 @@ class Category extends Model
 
     public function setSlugAttribute($value)
     {
-        $this->attributes['slug'] = \Str::slug(empty($value) ? $this->name : $value, '-');
+        $this->attributes['slug'] = Str::slug(empty($value) ? $this->name : $value, '-');
     }
 
 

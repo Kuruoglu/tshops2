@@ -7,11 +7,26 @@ use Illuminate\Support\Str;
 
 class Product extends Model
 {
+    protected $fillable = [
+        'user_id',
+        'name',
+        'slug',
+        'short_desc',
+        'full_desc',
+        'category_id',
+        'brand_id',
+        'allow_reviews',
+        'price',
+        'old_price',
+        'qty',
+        'img',
+        'cross_sell'
+    ];
     protected $guarded = [];
 
     public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function category()
@@ -33,6 +48,6 @@ class Product extends Model
     {
         $fName = $value->getClientOriginalName();
         $value->move(public_path('uploads'), $fName);
-        $this->attributes['img'] = '/uploads' . $fName;
+        $this->attributes['img'] = '/uploads/' . $fName;
     }
 }
