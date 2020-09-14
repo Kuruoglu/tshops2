@@ -36,6 +36,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+//        dd($request->all());
         $order = Order::create($request->all());
         return redirect()->route('show.anons', $request->anons_id);
     }

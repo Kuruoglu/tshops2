@@ -2,7 +2,7 @@
 
 
 @section('content')
-{{--{{$orders}}--}}
+{{--{{$anons}}--}}
     <div class="container">
 {{--        <a href="{{route('order.create')}}" class="btn btn-dark">Создать заказ</a>--}}
         <table class="table">
@@ -21,10 +21,13 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($orders as $order)
+
+                @foreach ($orders as $order)
                 <tr>
+
                     <td>{{$loop->iteration}}</td>
-                    <td>{{$order->url ?? 'Наименование отсутсвует'}}</td>
+{{--                    <td> {{$order}}</td>--}}
+                    <td title="{{$order->url}}">{{\Str::limit($order->url, 10) ?? 'Наименование отсутсвует'}}</td>
                     <td>{{$order->qty}}</td>
                     <td>
                         <div style = "width: 25px; height: 25px; background-color: {{$order->color}}" ></div>
@@ -64,7 +67,9 @@
                         </form>
                     </td>
                 </tr>
-            @endforeach
+
+                @endforeach
+
             </tbody>
         </table>
     </div>

@@ -1,4 +1,4 @@
-<form action="{{route('order.store')}}" method="post">
+<form action="{{route('order.store')}}" method="post" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="anons_id" value="{{$anons->id}}">
     <input type="hidden" name="user_id" value="{{Auth::user()->id}}">

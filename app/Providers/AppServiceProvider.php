@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Anons;
 use App\Category;
 use App\Order;
 use Illuminate\Support\Facades\Auth;
@@ -132,6 +133,38 @@ class AppServiceProvider extends ServiceProvider
 
 
         }else {
+            $anons = Anons::with('orders', 'user')->where('user_id', 2)->get();
+            $arrOrder = [];
+            $arrNew = [];
+            $arrProccess = [];
+            $arrToSend = [];
+            $arrComplete = [];
+            $arrCanceled = [];
+            foreach ($anons as $orders) {
+                foreach ($orders->orders as $order) {
+//                    dd($orders->orders);
+                    array_push($arrOrder, $order);
+                    if($order->status_id == 1) {
+                        array_push($arrNew, $order);
+                    }
+                    if($order->status_id == 2) {
+                        array_push($arrProccess, $order);
+                    }
+                    if($order->status_id == 3) {
+                        array_push($arrComplete, $order);
+                    }
+                    if($order->status_id == 4) {
+                        array_push($arrToSend, $order);
+                    }
+                    if($order->status_id == 5) {
+                        array_push($arrCanceled, $order);
+                    }
+
+                }
+            }
+
+
+
                 $event->menu->add([
                     'key'   => 'orders',
                     'text'  => 'Заказы',
@@ -144,42 +177,42 @@ class AppServiceProvider extends ServiceProvider
                         [
                             'key' => 'allOrder',
                             'text' => 'Все заказы',
-                            'label' => Order::where('user_id', Auth::user()->id)->count(),
+                            'label' => count($arrOrder),
                             'label_color' => 'light',
                             'url'   => 'organizer/order/all',
                         ],
                         [
                             'key' => 'newOrder',
                             'text' => 'Новые',
-                            'label' => Order::where('status_id', 1)->where('user_id', Auth::user()->id)->count(),
+                            'label' => count($arrNew),
                             'label_color' => 'light',
                             'url'   => 'organizer/order/1',
                         ],
                         [
                             'key' => 'processOrder',
                             'text' => 'В процессе',
-                            'label' => Order::where('status_id', 2)->where('user_id', Auth::user()->id)->count(),
+                            'label' => count($arrProccess),
                             'label_color' => 'light',
                             'url'   => 'organizer/order/2',
                         ],
                         [
                             'key' => 'toSendOrder',
                             'text' => 'На отправку',
-                            'label' => Order::where('status_id', 4)->where('user_id', Auth::user()->id)->count(),
+                            'label' => count($arrToSend),
                             'label_color' => 'light',
                             'url'   => 'organizer/order/4',
                         ],
                         [
                             'key' => 'completeOrder',
                             'text' => 'Завершенные',
-                            'label' => Order::where('status_id', 3)->where('user_id', Auth::user()->id)->count(),
+                            'label' => count($arrComplete),
                             'label_color' => 'light',
                             'url'   => 'organizer/order/3',
                         ],
                         [
                             'key' => 'canceledOrder',
                             'text' => 'Отмененные',
-                            'label' => Order::where('status_id', 5)->where('user_id', Auth::user()->id)->count(),
+                            'label' => count($arrCanceled),
                             'label_color' => 'light',
                             'url'   => 'organizer/order/5',
                         ],

@@ -82,9 +82,12 @@ class User extends Authenticatable
 
     public function setImgAttribute($value)
     {
-        $fname = $value->getClientOriginalName();
-        $value->move(public_path('uploads'), $fname);
-        $this->attributes['img'] = '/uploads/' . $fname;
+            $fname = $value->getClientOriginalName();
+            $value->move(public_path('uploads'), $fname);
+            $this->attributes['img'] = '/uploads/' . $fname;
+
+
+
     }
 
     public function product()

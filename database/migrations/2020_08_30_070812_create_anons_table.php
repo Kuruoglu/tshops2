@@ -23,8 +23,8 @@ class CreateAnonsTable extends Migration
             $table->foreignId('user_id')->constrained();
 
             $table->string('service_tax')->nullable();
-            $table->string('price_off');
-            $table->string('additional_off');
+
+            $table->string('additional_off')->nullable();
             $table->string('need_cart');
             $table->string('need_qty')->nullable();
             $table->string('img')->nullable();

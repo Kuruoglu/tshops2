@@ -65,9 +65,15 @@ Route::group([
     Route::get('/order/{id}', 'OrderStatusController@status');
 //    Route::get('/anons/all', 'AnonsController@index');
     Route::resource('/anons', 'AnonsController');
+//    Route::resource('/order', 'OrderController');
+
+
+});
+Route::group([
+    'prefix' => 'organizer',
+    'namespace' => 'Org'
+], function () {
     Route::resource('/order', 'OrderController');
-
-
 });
 
 Auth::routes();

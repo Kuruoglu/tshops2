@@ -1,4 +1,4 @@
-<div class="card-group row">
+<div class="card-group row mt-3">
     @foreach ($anonses as $anons)
     <div class="col-md-6">
         <div class="card mb-3 p-4" style="max-width: 540px;">

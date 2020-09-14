@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Anons;
 use App\Http\Controllers\Controller;
 use App\Order;
+use App\Product;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -39,15 +41,20 @@ class ProfileController extends Controller
 
     public function orders()
     {
-//        dd('asd');
-        if (auth()->check()) {
-            $orders = Order::where('user_id', Auth::user()->id)->get();
-            return view('home.profile.orders', compact('orders'));
-        }
-        else {
-            return redirect(route('home'));
-        }
+         $orders = Order::with('status', 'anons.user')->where('user_id', Auth::user()->id)->get();
+         return view('home.profile.orders', compact('orders'));
+    }
+    public function anonses()
+    {
+        $user = User::with('anonses.user')->where('id', Auth::user()->id)->first();
 
+        return view('home.profile.anons', compact('user'));
+    }
+    public function products()
+    {
+        $products = Product::where('user_id', Auth::user()->id)->get();
+
+        return view('home.profile.product', compact('products'));
     }
 }
 

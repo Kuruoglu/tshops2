@@ -4,7 +4,7 @@
     @parent
         <div class="container py-4 " id="content">
 {{--            {{$user}}--}}
-            <form action="{{route('update.profile', $user->id)}}"   method="post">
+            <form action="{{route('update.profile', $user->id)}}"   method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="row mb-2">

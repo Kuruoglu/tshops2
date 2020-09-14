@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Org;
 
+use App\Anons;
 use App\Http\Controllers\Controller;
 use App\Order;
 use App\Status;
@@ -15,13 +16,18 @@ class OrderStatusController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function all()
     {
-
-        $orders = Order::with('status')->where('user_id', Auth::user()->id)->get();
-//        dd($orders);
+        $anons = Anons::with('orders', 'user')->where('user_id', Auth::user()->id)->get();
+        $orders = [];
+        foreach ($anons as $ordersAll) {
+            foreach ($ordersAll->orders as $order) {
+                array_push($orders, $order);
+            };
+        };
         $statuses = Status::all();
-        return view('org.orders', compact('orders', 'statuses'));
+        return view('org.orders', compact('statuses', 'orders'));
     }
 
 
@@ -33,7 +39,15 @@ class OrderStatusController extends Controller
      */
     public function status($id)
     {
-        $orders = Order::where('status_id', $id)->where('user_id', Auth::user()->id)->get();
+        $anons = Anons::with('orders', 'user')->where('user_id', Auth::user()->id)->get();
+        $orders = [];
+        foreach ($anons as $ordersAll) {
+            foreach ($ordersAll->orders as $order) {
+                if($order->status_id == $id) {
+                    array_push($orders, $order);
+                }
+            }
+        }
         $statuses = Status::all();
         return view('org.orders', compact('orders', 'statuses'));
     }

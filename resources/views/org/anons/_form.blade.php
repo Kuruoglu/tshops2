@@ -1,5 +1,22 @@
 <input type="hidden" value="{{Auth::user()->id}}" name="user_id">
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1"></span>
+    </div>
 
+    <input type="text" class="form-control" placeholder="Название"
+           name="title" aria-label="Ссылка магазина" aria-describedby="basic-addon1"
+           value="{{ old('title', $anons['title'] ?? '')}}"
+    >
+</div>
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1"></span>
+    </div>
+    <textarea name="short_desc" class="form-control" placeholder="Краткое описание">{{old('short_desc', $anons['short_desc'] ?? '') }}</textarea>
+
+
+</div>
 <div class="input-group mb-3">
     <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon1">@</span>
