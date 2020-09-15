@@ -14,7 +14,10 @@
                     </div>
                 </div>
                 @if (isset($user))
-                    @if($user->phone == null)
+                    @if($user->phone == null || $user->last_name == null
+                            || $user->city == null || $user->street == null
+                            || $user->bild_number == null || $user->flat == null
+                            || $user->zip == null || $user->post_office == null || $user->post_office_number == null)
                         <a class="btn btn-primary mb-2" href='{{asset("home/anons/$anons->id")}}' data-toggle="modal" data-target="#exampleModal">Учавствовать</a>
                     @else
                         <a class="btn btn-primary mb-2" href='{{asset("home/anons/$anons->id")}}' >Учавствовать</a>

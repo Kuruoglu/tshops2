@@ -29,27 +29,27 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/home') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ 'Главная' }}
                 </a>
 {{--                    {{dd(auth()->user()->hasRole('admin'))}}--}}
                 @if(auth()->check() && auth()->user()->hasRole('admin'))
                 <a class="navbar-brand" href="{{ url('/admin') }}">
-                    {{ 'Кабинет' }}
+                    {{ 'Личный кабинет' }}
                 </a>
                 @elseif (auth()->check() && auth()->user()->hasRole('organizer'))
 
                     <a class="navbar-brand" href="{{ url('/organizer') }}">
-                        {{ 'Кабинет' }}
+                        {{ 'Личный кабинет' }}
                     </a>
 
                 @elseif (auth()->check() && auth()->user()->hasRole('user'))
 
                     <a class="navbar-brand" href="{{ route('user.profile', Auth::user()->id) }}">
-                        {{ 'Кабинет' }}
+                        {{ 'Личный кабинет' }}
                     </a>
                 @else
                     <a class="navbar-brand" href="{{'/login'}}">
-                        {{ 'Кабинет' }}
+                        {{ 'Личный кабинет' }}
                     </a>
                 @endif
                 <a class="navbar-brand" href="{{'/product'}}">
@@ -73,11 +73,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Вход') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Регистрация') }}</a>
                                 </li>
                             @endif
                         @else
@@ -90,7 +90,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Выход') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

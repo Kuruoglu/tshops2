@@ -2,8 +2,7 @@
 
 
 @section('content')
-    <div class="container">
-
+    <div class="container mt-5">
     <div class="jumbotron small-box m-auto" style="width: 700px">
         <div class="image">
 
@@ -38,18 +37,28 @@
                         <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                         <input type="hidden" name="anons_id" value="{{$anons->id}}">
                         @if (!$anons->users->contains(Auth::user()->id))
+
                             <button type="submit" class="btn btn-primary mr-5">Стать участником</button>
                         @else
-                            <button type="submit" class="btn btn-primary mr-5">Отменить Участие</button>
+{{--                            <button type="button" class="btn btn-danger mr-5" data-toggle="modal" data-target="#exampleModal2">--}}
+{{--                                Отменить Участие--}}
+{{--                            </button>--}}
+                            <button type="submit" class="btn btn-danger mr-5">Отменить Участие</button>
                         @endif
+
 
                     </form>
 
                 </div>
                 <div>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        Добавить Заказ
-                    </button>
+                    @if ($anons->users->contains(Auth::user()->id))
+                        <button type="button" class="btn btn-primary mr-5" data-toggle="modal" data-target="#exampleModal">
+                            Добавить Заказ
+                        </button>
+                    @endif
+                    @if ($anons->orders->contains('user_id', Auth::user()->id))
+                        <a href="{{route('profile.orders')}}" class="btn btn-success ">Мои заказы</a>
+                    @endif
 
                 </div>
             </div>
@@ -76,5 +85,25 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel2">Внимание</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body ">
+                        @include('home.anons.modal2')
+                    </div>
+                    <div class="modal-footer d-flex justify-content-between">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 @stop

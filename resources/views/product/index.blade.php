@@ -1,7 +1,7 @@
 @extends('layouts.profile')
 
 @section('content')
-    <div class="container py-4 d-flex">
+    <div class="container py-4 d-flex flex-md-wrap">
 
         @if (auth()->check())
             <div class="wrapper__add-button">
@@ -22,6 +22,7 @@
                     <div class="card-body">
                         <p class="card-text">{{$product->name}}</p>
                         <p class="card-text">{{$product->price}} грн.</p>
+                        <p class="card-text">Продавец: {{$product->user->name}}</p>
                     </div>
                 </div>
         @endforeach
