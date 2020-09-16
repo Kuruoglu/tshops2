@@ -3,6 +3,7 @@
 
 @section('content')
     <div class="container mt-5">
+    @include('_messages')
     <div class="jumbotron small-box m-auto" style="width: 700px">
         <div class="image">
 

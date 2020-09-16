@@ -3,6 +3,7 @@
 @section('content')
     <div class="container py-4 d-flex flex-md-wrap">
 
+
         @if (auth()->check())
             <div class="wrapper__add-button">
                 <div class="add-button__container">

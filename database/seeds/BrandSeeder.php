@@ -16,21 +16,25 @@ class BrandSeeder extends Seeder
         $b1 = new Brand();
         $b1->name = 'Gucci';
         $b1->slug = Str::slug($b1->name, '-');
+
         $b1->save();
 
         $b2 = new Brand();
         $b2->name = 'Puma';
         $b2->slug = Str::slug($b2->name, '-');
+
         $b2->save();
 
         $b3 = new Brand();
         $b3->name = 'Michael Kors';
         $b3->slug = Str::slug($b3->name, '-');
+
         $b3->save();
 
         $b4 = new Brand();
         $b4->name = 'Adidas';
         $b4->slug = Str::slug($b4->name, '-');
+
         $b4->save();
 
         $b5 = new Brand();

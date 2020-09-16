@@ -20,7 +20,8 @@ class Product extends Model
         'old_price',
         'qty',
         'img',
-        'cross_sell'
+        'cross_sell',
+        'color'
     ];
     protected $guarded = [];
 

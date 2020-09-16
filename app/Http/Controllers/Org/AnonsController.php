@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\AnonsStoreRequest;
+
 
 class AnonsController extends Controller
 {
@@ -44,8 +46,9 @@ class AnonsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AnonsStoreRequest $request)
     {
+
 //        dd($request->all());
         $anons = Anons::create($request->all());
         return redirect()->route('anons.index');
@@ -94,8 +97,9 @@ class AnonsController extends Controller
      * @param  \App\Anons  $anon
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Anons $anon)
+    public function update(AnonsStoreRequest $request, Anons $anon)
     {
+        dd($request);
         $item = Anons::findOrFail($anon->id);
         $item->update($request->all());
         return redirect()->route('anons.edit', $item);

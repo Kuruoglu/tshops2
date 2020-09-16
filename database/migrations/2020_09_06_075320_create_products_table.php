@@ -26,6 +26,7 @@ class CreateProductsTable extends Migration
             $table->string('price');
             $table->string('old_price')->nullable();
             $table->string('qty');
+            $table->string('color');
             $table->string('img')->nullable();
             $table->string('cross_sell')->nullable();
             $table->timestamps();

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Org;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\OrderStoreRequest;
 use App\Order;
 use Illuminate\Http\Request;
 
@@ -34,11 +34,13 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(OrderStoreRequest $request)
     {
-//        dd($request->all());
+
+
         $order = Order::create($request->all());
-        return redirect()->route('show.anons', $request->anons_id);
+        return redirect()->route('show.anons', $request->anons_id)
+            ->with('success', "Вы создали заказ под номером $order->id");
     }
 
     /**
@@ -70,7 +72,7 @@ class OrderController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update(OrderStoreRequest $request, Order $order)
     {
 //        dd($order);
         $myOrder = Order::findOrFail($order->id);

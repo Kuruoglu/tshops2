@@ -6,6 +6,7 @@ use App\Brand;
 use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProductStoreRequest;
 
 class ProductController extends Controller
 {
@@ -41,11 +42,11 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductStoreRequest $request)
     {
 //        dd($request->all());
         $product = Product::create($request->all());
-        return back();
+        return back()->with('success', "Поздравляем вы добавили свой товар на продажу!");
     }
 
     /**
@@ -82,11 +83,11 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(ProductStoreRequest $request, Product $product)
     {
         $item = Product::findOrFail($product->id)->first();
         $item->update($request->all());
-        return back();
+        return back()->with('success', "Вы обновили свой товар!");
 
     }
 
