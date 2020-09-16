@@ -3,6 +3,7 @@
 @section('sidebar')
     @parent
         <div class="container py-4 " id="content">
+            @include('_messages')
 {{--            {{$user}}--}}
             <form action="{{route('update.profile', $user->id)}}"   method="post" enctype="multipart/form-data">
                 @csrf

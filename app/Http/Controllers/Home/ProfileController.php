@@ -17,6 +17,7 @@ class ProfileController extends Controller
         if (auth()->check()) {
             $user = User::find(Auth::user()->id);
             return view('home.profile.index', compact('user'));
+
         }
         else {
             return redirect(route('home'));
@@ -33,10 +34,9 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-//        dd($request->all());
         $user = User::findOrFail($id);
         $user->update($request->all());
-        return back();
+        return back()->with('success', 'Поздравляю вы обновили свой профиль и можете учавствовать в покупках');
     }
 
     public function orders()

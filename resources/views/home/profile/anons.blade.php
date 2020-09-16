@@ -3,9 +3,7 @@
 @section('sidebar')
     @parent
     <div class="container">
-        <a href="{{route('anons.create')}}" class="btn btn-primary mb-2">Создать анонс</a>
         <table class="table">
-
             <thead>
             <tr>
                 <th>Бренд</th>

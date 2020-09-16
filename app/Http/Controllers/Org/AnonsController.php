@@ -24,6 +24,7 @@ class AnonsController extends Controller
     public function index()
     {
        $anonses = Anons::with('user','brand', 'users.orders')->where('user_id', Auth::user()->id)->get();
+
 //       dd($anonses);
        return view('org.anons.anons', compact('anonses'));
     }

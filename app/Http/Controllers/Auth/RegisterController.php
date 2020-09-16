@@ -56,6 +56,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'phone' => ['required', 'min:10'],
         ]);
     }
 
@@ -68,12 +69,25 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $userRole = Role::where('slug', 'user')->first();
+        $organizerRole = Role::where('slug', 'organizer')->first();
+//        dd($data);
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => $data['password'],
+            'phone' => $data['phone'],
         ]);
-        $user->roles()->attach($userRole);
+        if (isset($data['role'])) {
+            if ($data['role'] == 'on') {
+                $user->roles()->attach($organizerRole);
+            }else {
+                $user->roles()->attach($userRole);
+
+            }
+        }else {
+            $user->roles()->attach($userRole);
+        }
+
         ////                Mail::to($data['email'])->send(new NewUserNotification($data))
         return $user;
     }

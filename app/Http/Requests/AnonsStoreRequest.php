@@ -33,7 +33,7 @@ class AnonsStoreRequest extends FormRequest
             'additional_off' => 'nullable|numeric',
             'need_cart' => 'required|numeric',
             'img' => 'nullable|mimes:jpeg,png,jpg',
-            'date_purchase' => 'required'
+            'date_purchase' => 'required|date_format:Y-m-d\TH:i'
 
         ];
     }

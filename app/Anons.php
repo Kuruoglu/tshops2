@@ -9,10 +9,12 @@ use App\Member;
 use App\Order;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class Anons extends Model
 {
     protected $guarded = [];
+    protected $dates = ['created_at', 'updated_at', 'date_purchase'];
 
     public function categories()
     {
@@ -45,13 +47,20 @@ class Anons extends Model
         $value->move(public_path('uploads'), $fname);
         $this->attributes['img'] = '/uploads/' . $fname;
     }
-//    public function setDatePurchaseAttribute($value)
-//    {
-//        $this->attributes['date_purchase'] = Carbon::createFromFormat('d/m/Y', $value);
-//    }
+    public function setDatePurchaseAttribute($value)
+    {
+
+        $this->attributes['date_purchase'] = Carbon::createFromFormat('Y-m-d\TH:i', $value)->format('Y-m-d H:s:i');
+    }
     public function getDatePurchaseAttribute($value)
     {
-        return Carbon::parse($value)->format('d/m/Y');
+//        dd($value);
+        return Carbon::parse($value)->format('d-m-Y H:i');
     }
+
+//    public function scopeAnonsAll($query)
+//    {
+//        return $query->where('user_id', Auth::user()->id)->get();
+//    }
 
 }
