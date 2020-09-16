@@ -2,6 +2,7 @@
 
 @section('content')
 {{--    {{$anons}}--}}
+@include('_messages')
     <div class="jumbotron small-box">
         <div class="image">
 

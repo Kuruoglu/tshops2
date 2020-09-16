@@ -32,4 +32,16 @@ class OrderStoreRequest extends FormRequest
             'img' => '->nullable|mimes:jpeg,png,jpg',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'url.required' => 'Сылка на сайт обязательна',
+            'qty.required' => 'Поле количество обязательно',
+            'price.required' => 'Поле цена обязательна',
+            'color.required' => 'Поле цвет обязательно',
+            'size.required' => 'Поле размер обязательно',
+            'img.mimes' => 'Картинка должна иметь расширения :values',
+        ];
+    }
 }
