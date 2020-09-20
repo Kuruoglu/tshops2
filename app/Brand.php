@@ -30,4 +30,9 @@ class Brand extends Model
         $value->move(public_path('/uploads'), $fname);
         $this->attributes['img'] = '/uploads/' . $fname;
     }
+
+    public function getImgAttribute($value)
+    {
+        return $value ? $value : asset('/uploads/no-image.jpg');
+    }
 }

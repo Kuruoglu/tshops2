@@ -102,3 +102,32 @@
     }
 
 }
+.anons-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    margin-bottom: 20px;
+    height: 250px;
+    border-radius: 5px;
+    padding: 10px;
+    .anons-card__content {
+        display: flex;
+        height: 175px;
+        .anons-card__img {
+            width: 35%;
+            margin-right: 10px;
+        }
+        .anons-card__info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex: 1;
+            padding: 15px;
+        }
+        .anons-card__wrapper-button {
+            padding: 10px;
+            align-self: flex-end;
+        }
+    }
+}
