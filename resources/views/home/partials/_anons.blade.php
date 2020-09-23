@@ -9,7 +9,8 @@
                     <div class="anons-card__info">
 
                         <h5 class="card-title">{{$anons->title}}</h5>
-                        <hr>
+                        <h6>Организатор: <strong><a href="">{{$anons->user->name}}</a></strong></h6>
+
                         <p class="card-text">{{$anons->short_desc}}</p>
                         <p class="card-text"><small class="text-muted">Обновленно {{$anons->updated_at}}</small></p>
 
@@ -35,6 +36,9 @@
         </div>
 
     @endforeach
+</div>
+<div class="d-flex justify-content-center">
+    {{ $anonses->links() }}
 </div>
 
 

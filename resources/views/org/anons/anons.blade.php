@@ -44,7 +44,7 @@
                         </div>
 
                     </td>
-                    <td><a href="" class="btn btn-primary">Сформировать выкуп</a></td>
+                    <td><a href="{{route('org-purchase.add', ['anons' => $anons])}}" class="btn btn-primary">Сформировать выкуп</a></td>
 
 
                     <td class="d-flex justify-content-lg-end">

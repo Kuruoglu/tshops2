@@ -17,7 +17,7 @@ class MainController extends Controller
     {
 
         $brands = Brand::all();
-        $anonses = Anons::with('user','brand', 'users.orders')->get();
+        $anonses = Anons::with('user','brand', 'users.orders')->paginate(4);
         if (Auth::user()) {
             $user = User::where('id', Auth::user()->id)->first();
             return view('home.index', compact('brands', 'anonses', 'user'));

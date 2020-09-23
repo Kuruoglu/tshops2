@@ -6,7 +6,7 @@
     <input type="text" name="name" value="{{ old('name', $brand->name ?? '')  }}" class="form-control" placeholder="Наименование бренда">
 </div>
 <div class="form-group">
-    <input type="text" name="slug" value="{{ old('name', $brand->slug ?? '')  }}" class="form-control" placeholder="Как будет выглядеть в ссылке">
+    <input type="hidden" name="slug" value="{{ old('name', $brand->slug ?? '')  }}" class="form-control" placeholder="Как будет выглядеть в ссылке">
 </div>
 
 

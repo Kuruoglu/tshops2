@@ -228,6 +228,24 @@ class AppServiceProvider extends ServiceProvider
                     'icon'  => 'far fa-fw fa-user',
                     'url'   => '/organizer/anons/',
                 ]);
+                $event->menu->add([
+                    'key'   => 'brand',
+                    'text'  => 'Добавить бренд',
+                    'icon'  => 'far fa-fw fa-plus',
+                    'url'   => '/organizer/brand/add',
+                ]);
+                $event->menu->add([
+                    'key'   => 'purchases',
+                    'text'  => 'Мои выкупы',
+                    'icon'  => 'far fa-fw fa-plus',
+                    'url'   => '/organizer/purchases',
+                ]);
+                $event->menu->add([
+                    'key'   => 'client',
+                    'text'  => 'Мои клиенты',
+                    'icon'  => 'far fa-fw fa-plus',
+                    'url'   => '/organizer/client',
+                ]);
 
             }
         });

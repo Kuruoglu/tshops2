@@ -65,6 +65,11 @@ Route::group([
     Route::get('/order/{id}', 'OrderStatusController@status');
 //    Route::get('/anons/all', 'AnonsController@index');
     Route::resource('/anons', 'AnonsController');
+    Route::get('/brand/add', 'BrandController@create')->name('org-brand.add');
+    Route::post('/brand/store', 'BrandController@store')->name('org-brand.store');
+    Route::get('/purchase/create', 'PurchaseController@create')->name('org-purchase.add');
+    Route::get('/purchase/order/{id}', 'PurchaseController@order')->name('org-purchase.show-order');
+    Route::get('/client', 'ClientController@index')->name('org-purchase.clients');
 //    Route::resource('/order', 'OrderController');
 
 

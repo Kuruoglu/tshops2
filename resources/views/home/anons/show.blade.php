@@ -3,11 +3,12 @@
 
 @section('content')
     <div class="container mt-5">
-        {{auth()->user()->phone}}
+
     @include('_messages')
     <div class="jumbotron small-box m-auto" style="width: 700px">
-        <div class="image">
-
+        <div class="mb-3">
+            <h4>{{$anons->title}}</h4>
+            <span>Организатор: {{$anons->user->name}}</span>
         </div>
         <div class="d-flex ">
             <div class="image mr-5 border">
@@ -19,7 +20,7 @@
                 <div>Дата выкупа <span>{{$anons->date_purchase}}</span></div>
             </div>
         </div>
-            <div class="d-flex mb-5">
+            <div class="d-flex mb-5 mt-4">
                 <div class="mr-5">Необходимо для выкупа <span>{{$anons->need_cart}}</span></div>
                 <div class="mr-5">Всего собранно
                     <span>

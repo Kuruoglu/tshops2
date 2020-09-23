@@ -7,6 +7,7 @@
 @stop
 
 @section('content')
+sdfsdf
 {{--    @role('project-manager')--}}
 {{--    Project Manager Panel--}}
 {{--    @endrole--}}

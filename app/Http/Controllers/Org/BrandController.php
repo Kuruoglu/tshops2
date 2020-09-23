@@ -24,7 +24,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        return view('org.brand.create');
     }
 
     /**
@@ -35,7 +35,8 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $brand = Brand::create($request->all());
+        return redirect()->back();
     }
 
     /**

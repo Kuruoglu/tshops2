@@ -26,6 +26,12 @@ class Order extends Model
     {
         return $this->belongsTo(Status::class);
     }
+    public function hasClient(int $id, array $arr) : bool {
+        foreach($arr as $client) {
+            if($client->id == $id) return true;
+        }
+        return false;
+    }
 
 
 
