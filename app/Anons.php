@@ -64,6 +64,13 @@ class Anons extends Model
         return Carbon::parse($value)->format('d-m-Y H:i');
     }
 
+    public function hasAnons(int $id, $arr) : bool {
+        foreach($arr as $pur) {
+            if($pur->anons_id == $id) return true;
+        }
+        return false;
+    }
+
 //    public function scopeAnonsAll($query)
 //    {
 //        return $query->where('user_id', Auth::user()->id)->get();

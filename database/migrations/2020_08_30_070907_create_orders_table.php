@@ -17,7 +17,8 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->foreignId('status_id')->constrained();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('anons_id')->constrained()->onDelete('cascade');;
+            $table->foreignId('anons_id')->constrained()->onDelete('cascade');
+            $table->string('phone')->nullable();
             $table->string('url');
             $table->string('qty');
             $table->string('color');

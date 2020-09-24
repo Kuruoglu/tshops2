@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Home;
 use App\Anons;
 use App\Brand;
 use App\Http\Controllers\Controller;
+use App\Purchase;
 use App\Role;
 use App\User;
 use Illuminate\Http\Request;
@@ -15,10 +16,20 @@ class MainController extends Controller
 
     public function index()
     {
+        $anonses = [];
+        $purchase = Purchase::all();
 
         $brands = Brand::all();
-        $anonses = Anons::with('user','brand', 'users.orders')->paginate(4);
+        $anons = Anons::with('user','brand', 'users.orders')->paginate(4);
+        foreach ($anons as $itemAnons) {
+
+            if(!$itemAnons->hasAnons($itemAnons->id, $purchase)) {
+                array_push($anonses, $itemAnons);
+            };
+        }
+
         if (Auth::user()) {
+
             $user = User::where('id', Auth::user()->id)->first();
             return view('home.index', compact('brands', 'anonses', 'user'));
         }

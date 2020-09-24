@@ -6,15 +6,25 @@
 
 
 
-            <div class="purchase__side-bar col-md-4">
+            <div class="purchase__side-bar col-md-4 mb-2">
                 @foreach ($anons->orders as $item)
                 <div class="purchase__side-item">
                         <a href="{{route('org-purchase.show-order', [$item, 'anons'=>$anons])}}">{{$item->user->name}}</a>
                 </div>
 
                 @endforeach
-            </div>
 
+            <div class="mt-5">
+                <form action="{{route('org-purchase.store')}}">
+                    <input type="hidden" name="anons_id" value="{{$anons->id}}">
+                    <input type="hidden" name="brand_id" value="{{$anons->brand_id}}">
+                    <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
+{{--                    <input type="hidden" name="date_purchase" value="{{$anons->date_purchase}}">--}}
+                    <button type="submit" class="btn btn-primary">Закончить оформление</button>
+                </form>
+{{--                <a href="" class="btn btn-primary">Закончить оформление</a>--}}
+            </div>
+            </div>
 
 
             <div class="purchase__content col-md-8">

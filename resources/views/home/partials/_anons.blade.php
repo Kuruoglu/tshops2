@@ -37,9 +37,11 @@
 
     @endforeach
 </div>
+
 <div class="d-flex justify-content-center">
-    {{ $anonses->links() }}
+{{--    {{ $anonses->links()}}--}}
 </div>
+
 
 
 

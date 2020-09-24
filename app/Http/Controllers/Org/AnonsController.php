@@ -6,6 +6,7 @@ use App\Anons;
 use App\Category;
 use App\Mail\NewUserNotification;
 use App\Order;
+use App\Purchase;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -23,7 +24,14 @@ class AnonsController extends Controller
      */
     public function index()
     {
-       $anonses = Anons::with('user','brand', 'users.orders')->where('user_id', Auth::user()->id)->get();
+        $anonses = [];
+        $purchase = Purchase::all();
+       $anons = Anons::with('user','brand', 'users.orders')->where('user_id', Auth::user()->id)->get();
+       foreach ($anons as $itemAnons) {
+           if(!$itemAnons->hasAnons($itemAnons->id, $purchase)) {
+              array_push($anonses, $itemAnons);
+           };
+       }
 
 //       dd($anonses);
        return view('org.anons.anons', compact('anonses'));

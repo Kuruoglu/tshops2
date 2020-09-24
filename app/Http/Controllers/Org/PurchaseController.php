@@ -58,7 +58,11 @@ class PurchaseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
+        $purchase = Purchase::create($request->all());
+
+        return redirect()->route('anons.index');
     }
 
     /**

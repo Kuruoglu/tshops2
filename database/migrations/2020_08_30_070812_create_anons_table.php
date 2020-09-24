@@ -28,8 +28,8 @@ class CreateAnonsTable extends Migration
             $table->string('need_cart');
             $table->string('need_qty')->nullable();
             $table->string('img')->nullable();
-            $table->date('date_purchase');
-            ('d.m.Y');
+            $table->timestamp('date_purchase');
+
             $table->timestamps();
         });
     }
