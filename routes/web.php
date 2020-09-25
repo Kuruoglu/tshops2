@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+    Route::get('/', 'Home\MainController@index')->name('home');
 Route::group([
     'prefix' => 'home',
     'namespace' => 'Home'
 ], function () {
-    Route::get('/', 'MainController@index')->name('home');
     Route::resource('/brand', 'BrandController');
     Route::get('/anons/{id}', 'AnonsController@show')->name('show.anons');
     Route::post('/anons/user/add', 'AnonsController@add');
