@@ -69,6 +69,7 @@ Route::group([
     Route::get('/purchase/create', 'PurchaseController@create')->name('org-purchase.add');
     Route::get('/purchase/order/{id}', 'PurchaseController@order')->name('org-purchase.show-order');
     Route::get('/purchase/store', 'PurchaseController@store')->name('org-purchase.store');
+    Route::get('/purchase', 'PurchaseController@index')->name('org-purchase.index');
     Route::get('/client', 'ClientController@index')->name('org-purchase.clients');
 
 

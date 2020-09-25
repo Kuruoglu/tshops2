@@ -19,5 +19,10 @@ class Purchase extends Model
 //        dd($value);
         return Carbon::parse($value)->format('d-m-Y H:i');
     }
+    public function getDateDeliveryAttribute($value)
+    {
+//        dd($value);
+        return Carbon::parse($value)->format('d-m-Y H:i');
+    }
 
 }

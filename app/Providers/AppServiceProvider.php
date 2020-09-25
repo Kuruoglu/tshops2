@@ -238,7 +238,7 @@ class AppServiceProvider extends ServiceProvider
                     'key'   => 'purchases',
                     'text'  => 'Мои выкупы',
                     'icon'  => 'far fa-fw fa-plus',
-                    'url'   => '/organizer/purchases',
+                    'url'   => '/organizer/purchase',
                 ]);
                 $event->menu->add([
                     'key'   => 'client',

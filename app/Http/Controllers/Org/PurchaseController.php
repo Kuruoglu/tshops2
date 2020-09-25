@@ -17,6 +17,8 @@ class PurchaseController extends Controller
      */
     public function index()
     {
+        $purchases = Purchase::where('user_id', auth()->user()->id)->get();
+        return view('org.purchase.index', compact('purchases'));
 
     }
 
